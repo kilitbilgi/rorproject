@@ -15,12 +15,12 @@
 //= require turbolinks
 //= require_tree .
 
-require 'custom-form-elements'
-require 'jquery'
-require 'jquery.meio.mask'
-require 'jquery.selectbox'
-require 'jquery.slider.min'
-require 'jquery-migrate'
-require 'jquery-ui'
-require 'placeholder_ie'
-require 'script'
+require jquery
+require jquery.meio.mask
+require jquery.selectbox
+require jquery.slider.min
+require jquery-migrate
+require jquery-ui
+require placeholder_ie
+require script
+require_tree
