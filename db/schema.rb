@@ -11,6 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20141130221259) do
+
+  create_table "members", force: true do |t|
+    t.string   "fname"
+    t.string   "lname"
+    t.datetime "bdate"
+    t.string   "email"
+    t.integer  "cellphone"
+    t.string   "password"
+    t.boolean  "isAdmin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
