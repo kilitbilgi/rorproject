@@ -10,17 +10,4 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require turbolinks
-//= require_tree .
-
-require jquery
-require jquery.meio.mask
-require jquery.selectbox
-require jquery.slider.min
-require jquery-migrate
-require jquery-ui
-require placeholder_ie
-require script
-require_tree
+//= require_tree
