@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails rorproject: development" uuid="6eaccb12-5559-4946-a5f0-e234d996cad5" />
+    <data-source name="Rails rorproject: test" uuid="93595d9b-d098-4554-9415-0775f26d4275" />
+    <data-source name="Rails rorproject: cucumber" uuid="c4ffa409-4b0b-4133-aa93-c675e21709b5" />
+  </component>
+</project>
