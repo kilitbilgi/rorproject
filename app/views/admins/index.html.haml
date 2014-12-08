@@ -1,0 +1,9 @@
+.container
+  .login-container
+    #output
+    .avatar
+    .form-box
+      %form{:action => "admins/login", :method => "post"}
+        %input{:autofocus => "", :name => "email", :placeholder => "email address", :required => "", :type => "text"}
+          %input{:name => "password", :placeholder => "password", :required => "", :type => "password"}
+            %button.btn.btn-info.btn-block.login{:type => "submit"} Login

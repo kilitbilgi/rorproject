@@ -1,4 +1,4 @@
-class MembersController < ApplicationController
+class MemberController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
 
   # GET /members
