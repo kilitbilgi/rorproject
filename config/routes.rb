@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get '/admin/editCar' => 'admin#editCar'
   get '/admin' => 'admin#index'
   get '/admin/Submit' => 'admin#addCarComplete'
+  get '/choose_car' , to:'general#choose_car'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

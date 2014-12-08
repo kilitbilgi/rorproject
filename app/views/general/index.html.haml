@@ -4,35 +4,35 @@
   %meta{:name => "viewport" , :content => "width=device-width, initial-scale=1"}
   = stylesheet_link_tag    'general', media: 'all', 'data-turbolinks-track' => true
   = csrf_meta_tags
-  %link{:href => "http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", :rel => "stylesheet"}
+  %link{:href => "http:maxcdn.bootstrapcdn.comfont-awesome4.2.0cssfont-awesome.min.css", :rel => "stylesheet"}
 %body.center-slider.one-column.middle-sidebar
   #conteiner
     #branding
       #branding-content
         .title-content
-          %a{:href => "/", :title => ""}
-            %img.site-logo{:alt => "", :src => "/assets/logo.png"}/
+          %a{:href => "", :title => ""}
+            %img.site-logo{:alt => "", :src => "assetslogo.png"}
           %h1.site-title
-            %a{:href => "/", :title => ""} Renta
+            %a{:href => "", :title => ""} Renta
         .access-content
           %ul
-        / .access
+         .access
         .menus-content
           .member
             %span.sign_in
               %a.sign_button.tab_link_button{:href => "#sign_in", :title => ""} Sign in
             %span.register
               %a.sign_button.tab_link_button{:href => "#register", :title => ""} Register
-      / #branding-content
+       #branding-content
       .clear
-    / #branding
+     #branding
     #slider
       #slider-img
         %ul.slides
           %li
-            %img{:alt => "Slider 1", :src => "/assets/slider1.jpg"}/
+            %img{:alt => "Slider 1", :src => "assetsslider1.jpg"}
           %li
-            %img{:alt => "Slider 3", :src => "/assets/slider3.jpg"}/
+            %img{:alt => "Slider 3", :src => "assetsslider3.jpg"}
         #slider-pattern
       #slider-content
         #slider-post
@@ -41,7 +41,7 @@
               %h3.entry-format Welcome to Rent A Car
             .entry-content
               Start now for rent
-        %form#slider-form.main-form{:action => "choose-car.php", :method => "post"}/
+        %form#slider-form.main-form{:action => "choose_car", :method => "get"}
         .main_form_navigation
           #manage_reservation.title-form1.current
             Create A Request
@@ -49,37 +49,37 @@
           .location-block
             .form-block.location
               Location
-            %input.location{:name => "location", :placeholder => "Enter Location", :type => "text", :value => ""}/
+            %input.location{:name => "location", :placeholder => "Enter Location", :type => "text", :value => ""}
           .form-block.pick-up
             %h4 Pick-up date
-            %input.datepicker{:name => "date_from", :placeholder => "Click and Select Date", :type => "text"}/
+            %input.datepicker{:name => "date_from", :placeholder => "Click and Select Date", :type => "text"}
           .form-block.drop-off
             %h4 Drop-off date
-            %input.datepicker{:name => "date_to", :placeholder => "Click and Select Date", :type => "text"}/
+            %input.datepicker{:name => "date_to", :placeholder => "Click and Select Date", :type => "text"}
           .form-block.form-submit
-            %input.orange_button.form-continue{:name => "choose_car", :type => "submit", :value => "Choose Car"}/
+            %input.orange_button.form-continue{:name => "choose_car", :type => "submit", :value => "Choose Car"}
         .clear
-    / #slider
+     #slider
     #main
       .sidebars-area
         %aside.sidebar-left
           .widget.widget-features
             %h3.widget-title
-              %img{:alt => "", :src => "/assets/lamp.png"}/
+              %img{:alt => "", :src => "assetslamp.png"}
               Find Us
             .clear{:style => "padding-bottom:1px"}
-            %script{:src => "http://maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
+            %script{:src => "http:maps.google.commapsapijs?sensor=false", :type => "textjavascript"}
             %div{:style => "overflow:hidden;height:250px;width:299px;"}
               #gmap_canvas{:style => "height:250px;width:300px;"}
               :css
                 #gmap_canvas img{max-width:none!important;background:none!important}
-                                              %a#get-map-data.google-map-code{:href => "http://www.mapsembed.com"} http://www.mapsembed.com
+                                              %a#get-map-data.google-map-code{:href => "http:www.mapsembed.com"} http:www.mapsembed.com
             %script function init_map(){var myOptions = {zoom:17,center:new google.maps.LatLng(38.581184,26.963882000000012),mapTypeId: google.maps.MapTypeId.SATELLITE};map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(38.581184, 26.963882000000012)});infowindow = new google.maps.InfoWindow({content:"RentaGediz Gediz &Uuml;nv" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);      .sidebar-middle
         .sidebar-middle
           .widget.main-widget
             .widget-title
               %div
-                %img{:alt => "", :src => "/assets/latest.png"}/
+                %img{:alt => "", :src => "assetslatest.png"}
                 Last 3 Added Cars
               .clear
             .post
@@ -87,7 +87,7 @@
                 %span Nissan
               .entry-content
                 %div{:style => "float:left;"}
-                  %img{:height => "76", :src => "/assets/maxima.png", :width => "149"}/
+                  %img{:height => "76", :src => "assetsmaxima.png", :width => "149"}
                 %div{:style => "margin-left:30px;float:left;"}
                   %ul
                     %li.lastadded
@@ -101,14 +101,14 @@
                       2013
                     %li.lastadded
                       %strong> Price:
-                      45$/day
+                      45$day
                 .clear
             .post
               .entry-header
                 %span Renault
               .entry-content
                 %div{:style => "float:left;"}
-                  %img{:height => "76", :src => "/assets/clio.png", :width => "149"}/
+                  %img{:height => "76", :src => "assetsclio.png", :width => "149"}
                 %div{:style => "margin-left:30px;float:left;"}
                   %ul
                     %li.lastadded
@@ -122,14 +122,14 @@
                       2012
                     %li.lastadded
                       %strong> Price:
-                      160$/day
+                      160$day
                 .clear
             .post
               .entry-header
                 %span Ferrari
               .entry-content
                 %div{:style => "float:left;"}
-                  %img{:height => "76", :src => "/assets/ferrari-enzo.png", :width => "149"}/
+                  %img{:height => "76", :src => "assetsferrari-enzo.png", :width => "149"}
                 %div{:style => "margin-left:30px;float:left;"}
                   %ul
                     %li.lastadded
@@ -143,27 +143,27 @@
                       2013
                     %li.lastadded
                       %strong> Price:
-                      120$/day
+                      120$day
                 .clear
         %aside.sidebar-right
           .widget
             %h3.widget-title
-              %img{:alt => "lamp", :src => "/assets/lamp.png"}/
+              %img{:alt => "lamp", :src => "assetslamp.png"}
               Social Media
             .widget-content
-              %a{:href => "http://www.facebook.com"}
-                %img{:alt => "Facebook", :src => "/assets/fb-social.png"}/
-              %a{:href => "http://www.twitter.com"}
-                %img{:alt => "Twitter", :src => "/assets/tw-social.png"}/
-              %a{:href => "http://plus.google.com"}
-                %img{:alt => "Google Plus", :src => "/assets/gplus-social.png"}/
-              %a{:href => "http://www.linkedin.com"}
-                %img{:alt => "Linkedin", :src => "/assets/in-social.png"}/
-              %a{:href => "http://www.skype.com"}
-                %img{:alt => "Skype", :src => "/assets/skype-social.png"}/
+              %a{:href => "http:www.facebook.com"}
+                %img{:alt => "Facebook", :src => "assetsfb-social.png"}
+              %a{:href => "http:www.twitter.com"}
+                %img{:alt => "Twitter", :src => "assetstw-social.png"}
+              %a{:href => "http:plus.google.com"}
+                %img{:alt => "Google Plus", :src => "assetsgplus-social.png"}
+              %a{:href => "http:www.linkedin.com"}
+                %img{:alt => "Linkedin", :src => "assetsin-social.png"}
+              %a{:href => "http:www.skype.com"}
+                %img{:alt => "Skype", :src => "assetsskype-social.png"}
           .widget
             %h3.widget-title
-              %img{:alt => "", :src => "/assets/lamp.png"}/
+              %img{:alt => "", :src => "assetslamp.png"}
               Car Brands
             %ul
               %li.even
@@ -184,25 +184,25 @@
           .clear
           .footer-widget-single
             %h3{:style => "color:#444c57"}
-              %img{:alt => "star", :src => "/assets/star.png", :style => "padding-right:6px;"}>/
+              %img{:alt => "star", :src => "assetsstar.png", :style => "padding-right:6px;"}>
               Latest News From Our Blog
             %div{:style => "width:360px;padding-top:5px;"}
               %ol
                 %li
-                  %a{:href => "http://burakcolak.com.tr/blog/?p=24", :target => "_blank"} Genelia WordPress Theme
+                  %a{:href => "http:burakcolak.com.trblog?p=24", :target => "_blank"} Genelia WordPress Theme
                 %li
-                  %a{:href => "http://burakcolak.com.tr/blog/?p=4", :target => "_blank"} MicroPiano
+                  %a{:href => "http:burakcolak.com.trblog?p=4", :target => "_blank"} MicroPiano
                 %li
-                  %a{:href => "http://burakcolak.com.tr/blog/?p=1", :target => "_blank"} Our blog is created now
+                  %a{:href => "http:burakcolak.com.trblog?p=1", :target => "_blank"} Our blog is created now
           .recent_tweets.footer-widget-single
             %h3 Recent tweets
             .recent_tweets_content
-              %a{:href => "https://www.twitter.com/Burak1Colak", :target => "_blank", :title => ""} @Burak1Colak
+              %a{:href => "https:www.twitter.comBurak1Colak", :target => "_blank", :title => ""} @Burak1Colak
               @ensaktas Güzel olmuş , eline sağ
             .recent_tweets_url
-              %a{:href => "http://www.kilitbilgi.com", :target => "_blank", :title => ""} http://www.kilitbilgi.com
+              %a{:href => "http:www.kilitbilgi.com", :target => "_blank", :title => ""} http:www.kilitbilgi.com
           .support.footer-widget-single
-            %img{:alt => "", :src => "/assets/support-icon.png"}/
+            %img{:alt => "", :src => "assetssupport-icon.png"}
             .title
               Online support
             .phone
@@ -210,15 +210,15 @@
             .email
               %a{:href => "mailto:sales@example.com", :title => "Contact Us"} sales@example.com
           .clear
-      / #footer-content
+       #footer-content
       #footer-content
-        %img.site-logo{:alt => "", :src => "/assets/logo.png"}/
+        %img.site-logo{:alt => "", :src => "assetslogo.png"}
         %h1.site-title Renta
         .company-name
           Copyright © 2014 - Developed by Burak &amp; Mali
-    / #footer-content
-    / end:footer
-  / end:container
+     #footer-content
+     end:footer
+   end:container
   #overlay_block
   .admin-form-content.sign_register_block
     .admin-form-block
@@ -273,4 +273,4 @@
                 %a.tab_link_button{:href => "#sign_in", :title => ""} Sign In
           .clear
   =javascript_include_tag 'application', 'data-turbolinks-track' => true
-  %script $(function(){$(".datepicker").datepicker({ dateFormat:"dd/mm/yy"})});
+  %script $(function(){$(".datepicker").datepicker({ dateFormat:"ddmmyy"})});

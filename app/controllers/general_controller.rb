@@ -17,6 +17,10 @@ class GeneralController < ApplicationController
     @general = General.new
   end
 
+  def choose_car
+
+  end
+
   # GET /generals/1/edit
   def edit
   end
