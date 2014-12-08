@@ -10,56 +10,49 @@
     #branding
       #branding-content
         .title-content
-          %a{:href => "", :title => ""}
-            %img.site-logo{:alt => "", :src => "assetslogo.png"}
+          %a{:href => "index.php", :title => ""}
+            %img.site-logo{:alt => "", :src => "/assets/logo.png"}
           %h1.site-title
-            %a{:href => "", :title => ""} Renta
+            %a{:href => "index.php", :title => ""} Renta
         .access-content
           %ul
-         .access
         .menus-content
           .member
             %span.sign_in
               %a.sign_button.tab_link_button{:href => "#sign_in", :title => ""} Sign in
             %span.register
               %a.sign_button.tab_link_button{:href => "#register", :title => ""} Register
-       #branding-content
       .clear
-     #branding
     #slider
       #slider-img
         %ul.slides
           %li
-            %img{:alt => "Slider 1", :src => "assetsslider1.jpg"}
+            %img{:alt => "Slider 1", :src => "/assets/slider1.jpg"}
           %li
-            %img{:alt => "Slider 3", :src => "assetsslider3.jpg"}
+            %img{:alt => "Slider 3", :src => "/assets/slider3.jpg"}
         #slider-pattern
       #slider-content
         #slider-post
           .post
             .entry-header
               %h3.entry-format Welcome to Rent A Car
-            .entry-content
-              Start now for rent
-        %form#slider-form.main-form{:action => "choose_car", :method => "get"}
-        .main_form_navigation
-          #manage_reservation.title-form1.current
-            Create A Request
-        #book_car_content.content-form
-          .location-block
-            .form-block.location
-              Location
-            %input.location{:name => "location", :placeholder => "Enter Location", :type => "text", :value => ""}
-          .form-block.pick-up
-            %h4 Pick-up date
-            %input.datepicker{:name => "date_from", :placeholder => "Click and Select Date", :type => "text"}
-          .form-block.drop-off
-            %h4 Drop-off date
-            %input.datepicker{:name => "date_to", :placeholder => "Click and Select Date", :type => "text"}
-          .form-block.form-submit
-            %input.orange_button.form-continue{:name => "choose_car", :type => "submit", :value => "Choose Car"}
-        .clear
-     #slider
+            .entry-content Start now for rent
+        %form#slider-form.main-form{:action => "choose-car.php", :method => "post"}
+          .main_form_navigation
+            #manage_reservation.title-form1.current Create A Request
+          #book_car_content.content-form
+            .location-block
+              .form-block.location Location
+              %input.location{:name => "location", :placeholder => "Enter Location", :type => "text", :value => ""}
+            .form-block.pick-up
+              %h4 Pick-up date
+              %input.datepicker{:name => "date_from", :placeholder => "Click and Select Date", :type => "text"}
+            .form-block.drop-off
+              %h4 Drop-off date
+              %input.datepicker{:name => "date_to", :placeholder => "Click and Select Date", :type => "text"}
+            .form-block.form-submit
+              %input.orange_button.form-continue{:name => "choose_car", :type => "submit", :value => "Choose Car"}
+          .clear
     #main
       .sidebars-area
         %aside.sidebar-left
@@ -210,15 +203,11 @@
             .email
               %a{:href => "mailto:sales@example.com", :title => "Contact Us"} sales@example.com
           .clear
-       #footer-content
       #footer-content
         %img.site-logo{:alt => "", :src => "assetslogo.png"}
         %h1.site-title Renta
         .company-name
           Copyright © 2014 - Developed by Burak &amp; Mali
-     #footer-content
-     end:footer
-   end:container
   #overlay_block
   .admin-form-content.sign_register_block
     .admin-form-block
