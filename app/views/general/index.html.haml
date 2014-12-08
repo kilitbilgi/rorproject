@@ -74,6 +74,7 @@
                 #gmap_canvas img{max-width:none!important;background:none!important}
                                               %a#get-map-data.google-map-code{:href => "http://www.mapsembed.com"} http://www.mapsembed.com
             %script function init_map(){var myOptions = {zoom:17,center:new google.maps.LatLng(38.581184,26.963882000000012),mapTypeId: google.maps.MapTypeId.SATELLITE};map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(38.581184, 26.963882000000012)});infowindow = new google.maps.InfoWindow({content:"RentaGediz Gediz &Uuml;nv" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);      .sidebar-middle
+        .sidebar-middle
           .widget.main-widget
             .widget-title
               %div
