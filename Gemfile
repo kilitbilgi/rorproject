@@ -52,5 +52,3 @@ group :test do
 end
 
 gem 'stripe', '~> 1.16.0'
-
-gem 'rails_12factor', group: :production
