@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'general#index'
 
-  post 'admin/login' => 'admin#login'
-  get 'admin/cars' => 'admin#cars'
-  get 'admin/addCar'=>'admin#addCar'
+  post '/admin/login' => 'admin#login'
+  get '/admin/cars' => 'admin#cars'
+  get '/admin/addCar'=>'admin#addCar'
   get '/admin' => 'admin#index'
   get '/admin/Submit' => 'admin#addCarComplete'
   # Example of regular route:
