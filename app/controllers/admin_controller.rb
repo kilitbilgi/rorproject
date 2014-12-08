@@ -1,4 +1,4 @@
-class AdminsController < ApplicationController
+class AdminController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
 
   # GET /admins
@@ -69,6 +69,6 @@ class AdminsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_params
-      params[:admins]
+      params[:admin]
     end
 end
