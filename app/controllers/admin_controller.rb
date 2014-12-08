@@ -12,6 +12,10 @@ class AdminController < ApplicationController
   def show
   end
 
+  def cars
+
+  end
+
   # GET /admins/new
   def new
     @admin = Admin.new

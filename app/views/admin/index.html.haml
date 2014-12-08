@@ -1,9 +1,15 @@
-.container
-  .login-container
-    #output
-    .avatar
-    .form-box
-      %form{:action => "admins/login", :method => "post"}
-        %input{:autofocus => "", :name => "email", :placeholder => "email address", :required => "", :type => "text"}
-          %input{:name => "password", :placeholder => "password", :required => "", :type => "password"}
-            %button.btn.btn-info.btn-block.login{:type => "submit"} Login
+%head
+  %title Rorproject
+  = stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  = csrf_meta_tags
+  %body
+    .container
+      .login-container
+        #output
+        .avatar
+        .form-box
+          %form{:action => "admins/login", :method => "post"}
+            %input{:autofocus => "", :name => "email", :placeholder => "email address", :required => "", :type => "text"}
+              %input{:name => "password", :placeholder => "password", :required => "", :type => "password"}
+                %button.btn.btn-info.btn-block.login{:type => "submit"} Login

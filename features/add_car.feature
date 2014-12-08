@@ -4,7 +4,7 @@ Feature: Add a Car
 
   Scenario: Write a post to the blog
     Given I am on the admin panel
-    When I click "Cars" link
+    When I click "admin/cars" link
     And I fill "ferrari.png" as imageUrl
     And I fill "500" as price
     And I fill "10" as stock

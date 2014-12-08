@@ -8,7 +8,7 @@ class AdminsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:admins)
+    assert_not_nil assigns(:admin)
   end
 
   test "should get new" do
@@ -18,10 +18,10 @@ class AdminsControllerTest < ActionController::TestCase
 
   test "should create admin" do
     assert_difference('Admin.count') do
-      post :create, admins: {  }
+      post :create, admin: {  }
     end
 
-    assert_redirected_to admin_path(assigns(:admins))
+    assert_redirected_to admin_path(assigns(:admin))
   end
 
   test "should show admin" do
@@ -35,8 +35,8 @@ class AdminsControllerTest < ActionController::TestCase
   end
 
   test "should update admin" do
-    patch :update, id: @admin, admins: {  }
-    assert_redirected_to admin_path(assigns(:admins))
+    patch :update, id: @admin, admin: {  }
+    assert_redirected_to admin_path(assigns(:admin))
   end
 
   test "should destroy admin" do

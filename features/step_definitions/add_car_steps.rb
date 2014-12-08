@@ -1,13 +1,13 @@
 Given(/^I am on the admin panel$/) do
-  pending # express the regexp above with the code you wish you had
+  visit('admin')
 end
 
-When(/^I click "(.*?)" link$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+When(/^I click "(.*?)" link$/) do |link|
+  visit link
 end
 
 And(/^I fill "(.*?)" as imageUrl$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+
 end
 
 And(/^I fill "(.*?)" as price$/) do |arg1|
