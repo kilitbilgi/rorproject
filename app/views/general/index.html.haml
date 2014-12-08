@@ -1,265 +1,276 @@
 %head
   %title Rorproject
+  %meta{:charset => "utf-8"}
   = stylesheet_link_tag    'general', media: 'all', 'data-turbolinks-track' => true
-  = javascript_include_tag 'application', 'data-turbolinks-track' => true
   = csrf_meta_tags
-  %body.center-slider.one-column.middle-sidebar
-    #conteiner
-      #branding
-        #branding-content
-          .title-content
-            %a{:href => "index.php", :title => ""}
-              %img.site-logo{:alt => "", :src => "images/logo.png"}/
-            %h1.site-title
-              %a{:href => "index.php", :title => ""} Renta
-          .access-content
-            %ul
-          / .access
-          .menus-content
-            .member
-              %span.sign_in
-                %a.sign_button.tab_link_button{:href => "#sign_in", :title => ""} Sign in
-              %span.register
-                %a.sign_button.tab_link_button{:href => "#register", :title => ""} Register
-        / #branding-content
+  %link{:href => "http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", :rel => "stylesheet"}
+%body.center-slider.one-column.middle-sidebar
+  #conteiner
+    #branding
+      #branding-content
+        .title-content
+          %a{:href => "index.php", :title => ""}
+            %img.site-logo{:alt => "", :src => "/assets/logo.png"}/
+          %h1.site-title
+            %a{:href => "index.php", :title => ""} Renta
+        .access-content
+          %ul
+        / .access
+        .menus-content
+          .member
+            %span.sign_in
+              %a.sign_button.tab_link_button{:href => "#sign_in", :title => ""} Sign in
+            %span.register
+              %a.sign_button.tab_link_button{:href => "#register", :title => ""} Register
+      / #branding-content
+      .clear
+    / #branding
+    #slider
+      #slider-img
+        %ul.slides
+          %li
+            %img{:alt => "Slider 1", :src => "/assets/slider1.jpg"}/
+          %li
+            %img{:alt => "Slider 3", :src => "/assets/slider3.jpg"}/
+        #slider-pattern
+      #slider-content
+        #slider-post
+          .post
+            .entry-header
+              %h3.entry-format Welcome to Rent A Car
+            .entry-content
+              Start now for rent
+        %form#slider-form.main-form{:action => "choose-car.php", :method => "post"}/
+        .main_form_navigation
+          #manage_reservation.title-form1.current
+            Create A Request
+        #book_car_content.content-form
+          .location-block
+            .form-block.location
+              Location
+            %input.location{:name => "location", :placeholder => "Enter Location", :type => "text", :value => ""}/
+          .form-block.pick-up
+            %h4 Pick-up date
+            %input.datepicker{:name => "date_from", :placeholder => "Click and Select Date", :type => "text"}/
+          .form-block.drop-off
+            %h4 Drop-off date
+            %input.datepicker{:name => "date_to", :placeholder => "Click and Select Date", :type => "text"}/
+          .form-block.form-submit
+            %input.orange_button.form-continue{:name => "choose_car", :type => "submit", :value => "Choose Car"}/
         .clear
-      / #branding
-      #slider
-        #slider-img
-          %ul.slides
-            %li
-              %img{:alt => "Slider 1", :src => "images/slider1.jpg"}/
-            %li
-              %img{:alt => "Slider 3", :src => "images/slider3.jpg"}/
-          #slider-pattern
-        #slider-content
-          #slider-post
+    / #slider
+    #main
+      .sidebars-area
+        %aside.sidebar-left
+          .widget.widget-features
+            %h3.widget-title
+              %img{:alt => "", :src => "/assets/lamp.png"}/
+              Find Us
+            .clear{:style => "padding-bottom:1px"}
+            %script{:src => "http://maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
+            %div{:style => "overflow:hidden;height:250px;width:299px;"}
+              #gmap_canvas{:style => "height:250px;width:300px;"}
+              :css
+                #gmap_canvas img{max-width:none!important;background:none!important}
+                                              %a#get-map-data.google-map-code{:href => "http://www.mapsembed.com"} http://www.mapsembed.com
+            %script function init_map(){var myOptions = {zoom:17,center:new google.maps.LatLng(38.581184,26.963882000000012),mapTypeId: google.maps.MapTypeId.SATELLITE};map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(38.581184, 26.963882000000012)});infowindow = new google.maps.InfoWindow({content:"RentaGediz Gediz &Uuml;nv" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);      .sidebar-middle
+          .widget.main-widget
+            .widget-title
+              %div
+                %img{:alt => "", :src => "/assets/latest.png"}/
+                Last 3 Added Cars
+              .clear
             .post
               .entry-header
-                %h3.entry-format Welcome to Rent A Car
-              .entry-content Start now for rent
-          %form#slider-form.main-form{:action => "choose-car.php", :method => "post"}/
-          .main_form_navigation
-            #manage_reservation.title-form1.current Create A Request
-          #book_car_content.content-form
-            .location-block
-              .form-block.location Location
-              %input.location{:name => "location", :placeholder => "Enter Location", :type => "text", :value => ""}/
-            .form-block.pick-up
-              %h4 Pick-up date
-              %input.datepicker{:name => "date_from", :placeholder => "Click and Select Date", :type => "text"}/
-            .form-block.drop-off
-              %h4 Drop-off date
-              %input.datepicker{:name => "date_to", :placeholder => "Click and Select Date", :type => "text"}/
-            .form-block.form-submit
-              %input.orange_button.form-continue{:name => "choose_car", :type => "submit", :value => "Choose Car"}/
-          .clear
-      / #slider
-      #main
-        .sidebars-area
-          %aside.sidebar-left
-            .widget.widget-features
-              %h3.widget-title
-                %img{:alt => "", :src => "images/lamp.png"}/
-                Find Us
-              .clear{:style => "padding-bottom:1px"}
-              %script{:src => "http://maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
-              %div{:style => "overflow:hidden;height:250px;width:299px;"}
-                #gmap_canvas{:style => "height:250px;width:300px;"}
-                :css
-                  #gmap_canvas img{max-width:none!important;background:none!important}            %a#get-map-data.google-map-code{:href => "http://www.mapsembed.com"} http://www.mapsembed.com
-              :javascript
-                function init_map(){var myOptions = {zoom:17,center:new google.maps.LatLng(38.581184,26.963882000000012),mapTypeId: google.maps.MapTypeId.SATELLITE};map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(38.581184, 26.963882000000012)});infowindow = new google.maps.InfoWindow({content:"RentaGediz Gediz &Uuml;nv" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);      .sidebar-middle
-            .widget.main-widget
-              .widget-title
-                %div
-                  %img{:alt => "", :src => "images/latest.png"}/
-                  Last 3 Added Cars
+                %span Nissan
+              .entry-content
+                %div{:style => "float:left;"}
+                  %img{:height => "76", :src => "http://www.burakcolak.com.tr/rentacar//assets/maxima.png", :width => "149"}/
+                %div{:style => "margin-left:30px;float:left;"}
+                  %ul
+                    %li.lastadded
+                      %strong> Make:
+                      Nissan
+                    %li.lastadded
+                      %strong> Model:
+                      Maxima
+                    %li.lastadded
+                      %strong> Year:
+                      2013
+                    %li.lastadded
+                      %strong> Price:
+                      45$/day
                 .clear
-              .post
-                .entry-header
-                  %span Nissan
-                .entry-content
-                  %div{:style => "float:left;"}
-                    %img{:height => "76", :src => "http://www.burakcolak.com.tr/rentacar/images/maxima.png", :width => "149"}/
-                  %div{:style => "margin-left:30px;float:left;"}
-                    %ul
-                      %li.lastadded
-                        %strong> Make:
-                        Nissan
-                      %li.lastadded
-                        %strong> Model:
-                        Maxima
-                      %li.lastadded
-                        %strong> Year:
-                        2013
-                      %li.lastadded
-                        %strong> Price:
-                        45$/day
-                  .clear
-              .post
-                .entry-header
-                  %span Renault
-                .entry-content
-                  %div{:style => "float:left;"}
-                    %img{:height => "76", :src => "http://www.burakcolak.com.tr/rentacar/images/clio.png", :width => "149"}/
-                  %div{:style => "margin-left:30px;float:left;"}
-                    %ul
-                      %li.lastadded
-                        %strong> Make:
-                        Renault
-                      %li.lastadded
-                        %strong> Model:
-                        Clio
-                      %li.lastadded
-                        %strong> Year:
-                        2012
-                      %li.lastadded
-                        %strong> Price:
-                        160$/day
-                  .clear
-              .post
-                .entry-header
-                  %span Ferrari
-                .entry-content
-                  %div{:style => "float:left;"}
-                    %img{:height => "76", :src => "http://www.burakcolak.com.tr/rentacar/images/ferrari-enzo.png", :width => "149"}/
-                  %div{:style => "margin-left:30px;float:left;"}
-                    %ul
-                      %li.lastadded
-                        %strong> Make:
-                        Ferrari
-                      %li.lastadded
-                        %strong> Model:
-                        Enzo
-                      %li.lastadded
-                        %strong> Year:
-                        2013
-                      %li.lastadded
-                        %strong> Price:
-                        120$/day
-                  .clear
-          %aside.sidebar-right
-            .widget
-              %h3.widget-title
-                %img{:alt => "lamp", :src => "images/lamp.png"}/
-                Social Media
-              .widget-content
-                %a{:href => "http://www.facebook.com"}
-                  %img{:alt => "Facebook", :src => "images/fb-social.png"}/
-                %a{:href => "http://www.twitter.com"}
-                  %img{:alt => "Twitter", :src => "images/tw-social.png"}/
-                %a{:href => "http://plus.google.com"}
-                  %img{:alt => "Google Plus", :src => "images/gplus-social.png"}/
-                %a{:href => "http://www.linkedin.com"}
-                  %img{:alt => "Linkedin", :src => "images/in-social.png"}/
-                %a{:href => "http://www.skype.com"}
-                  %img{:alt => "Skype", :src => "images/skype-social.png"}/
-            .widget
-              %h3.widget-title
-                %img{:alt => "", :src => "images/lamp.png"}/
-                Car Brands
-              %ul
-                %li.even
-                  %a{:href => "#", :title => ""} Ferrari
-                %li.odd
-                  %a{:href => "#", :title => ""} Ford
-                %li.even
-                  %a{:href => "#", :title => ""} Nissan
-                %li.odd
-                  %a{:href => "#", :title => ""} Renault
-                %li.even
-                  %a{:href => "#", :title => ""} Toyota
+            .post
+              .entry-header
+                %span Renault
+              .entry-content
+                %div{:style => "float:left;"}
+                  %img{:height => "76", :src => "http://www.burakcolak.com.tr/rentacar//assets/clio.png", :width => "149"}/
+                %div{:style => "margin-left:30px;float:left;"}
+                  %ul
+                    %li.lastadded
+                      %strong> Make:
+                      Renault
+                    %li.lastadded
+                      %strong> Model:
+                      Clio
+                    %li.lastadded
+                      %strong> Year:
+                      2012
+                    %li.lastadded
+                      %strong> Price:
+                      160$/day
+                .clear
+            .post
+              .entry-header
+                %span Ferrari
+              .entry-content
+                %div{:style => "float:left;"}
+                  %img{:height => "76", :src => "http://www.burakcolak.com.tr/rentacar//assets/ferrari-enzo.png", :width => "149"}/
+                %div{:style => "margin-left:30px;float:left;"}
+                  %ul
+                    %li.lastadded
+                      %strong> Make:
+                      Ferrari
+                    %li.lastadded
+                      %strong> Model:
+                      Enzo
+                    %li.lastadded
+                      %strong> Year:
+                      2013
+                    %li.lastadded
+                      %strong> Price:
+                      120$/day
+                .clear
+        %aside.sidebar-right
+          .widget
+            %h3.widget-title
+              %img{:alt => "lamp", :src => "/assets/lamp.png"}/
+              Social Media
+            .widget-content
+              %a{:href => "http://www.facebook.com"}
+                %img{:alt => "Facebook", :src => "/assets/fb-social.png"}/
+              %a{:href => "http://www.twitter.com"}
+                %img{:alt => "Twitter", :src => "/assets/tw-social.png"}/
+              %a{:href => "http://plus.google.com"}
+                %img{:alt => "Google Plus", :src => "/assets/gplus-social.png"}/
+              %a{:href => "http://www.linkedin.com"}
+                %img{:alt => "Linkedin", :src => "/assets/in-social.png"}/
+              %a{:href => "http://www.skype.com"}
+                %img{:alt => "Skype", :src => "/assets/skype-social.png"}/
+          .widget
+            %h3.widget-title
+              %img{:alt => "", :src => "/assets/lamp.png"}/
+              Car Brands
+            %ul
+              %li.even
+                %a{:href => "#", :title => ""} Ferrari
+              %li.odd
+                %a{:href => "#", :title => ""} Ford
+              %li.even
+                %a{:href => "#", :title => ""} Nissan
+              %li.odd
+                %a{:href => "#", :title => ""} Renault
+              %li.even
+                %a{:href => "#", :title => ""} Toyota
+        .clear
+    .clear
+    %footer#footer
+      #footer-menu.footer-content
+        .widget-area
           .clear
-      .clear
-      %footer#footer
-        #footer-menu.footer-content
-          .widget-area
-            .clear
-            .footer-widget-single
-              %h3{:style => "color:#444c57"}
-                %img{:alt => "star", :src => "images/star.png", :style => "padding-right:6px;"}>/
-                Latest News From Our Blog
-              %div{:style => "width:360px;padding-top:5px;"}
-                %ol
-                  %li
-                    %a{:href => "http://burakcolak.com.tr/blog/?p=24", :target => "_blank"} Genelia WordPress Theme
-                  %li
-                    %a{:href => "http://burakcolak.com.tr/blog/?p=4", :target => "_blank"} MicroPiano
-                  %li
-                    %a{:href => "http://burakcolak.com.tr/blog/?p=1", :target => "_blank"} Our blog is created now
-            .recent_tweets.footer-widget-single
-              %h3 Recent tweets
-              .recent_tweets_content
-                %a{:href => "https://www.twitter.com/Burak1Colak", :target => "_blank", :title => ""} @Burak1Colak
-                @ensaktas Güzel olmuş , eline sa�
-              .recent_tweets_url
-                %a{:href => "http://www.kilitbilgi.com", :target => "_blank", :title => ""} http://www.kilitbilgi.com
-            .support.footer-widget-single
-              %img{:alt => "", :src => "images/support-icon.png"}/
-              .title Online support
-              .phone 0500500505676
-              .email
-                %a{:href => "mailto:sales@example.com", :title => "Contact Us"} sales@example.com
-            .clear
-        / #footer-content
-        #footer-content
-          %img.site-logo{:alt => "", :src => "images/logo.png"}/
-          %h1.site-title Renta
-          .company-name Copyright © 2014 - Developed by Burak &amp; Mali
+          .footer-widget-single
+            %h3{:style => "color:#444c57"}
+              %img{:alt => "star", :src => "/assets/star.png", :style => "padding-right:6px;"}>/
+              Latest News From Our Blog
+            %div{:style => "width:360px;padding-top:5px;"}
+              %ol
+                %li
+                  %a{:href => "http://burakcolak.com.tr/blog/?p=24", :target => "_blank"} Genelia WordPress Theme
+                %li
+                  %a{:href => "http://burakcolak.com.tr/blog/?p=4", :target => "_blank"} MicroPiano
+                %li
+                  %a{:href => "http://burakcolak.com.tr/blog/?p=1", :target => "_blank"} Our blog is created now
+          .recent_tweets.footer-widget-single
+            %h3 Recent tweets
+            .recent_tweets_content
+              %a{:href => "https://www.twitter.com/Burak1Colak", :target => "_blank", :title => ""} @Burak1Colak
+              @ensaktas Güzel olmuş , eline sağ
+            .recent_tweets_url
+              %a{:href => "http://www.kilitbilgi.com", :target => "_blank", :title => ""} http://www.kilitbilgi.com
+          .support.footer-widget-single
+            %img{:alt => "", :src => "/assets/support-icon.png"}/
+            .title
+              Online support
+            .phone
+              0500500505676
+            .email
+              %a{:href => "mailto:sales@example.com", :title => "Contact Us"} sales@example.com
+          .clear
       / #footer-content
-      / end:footer
-    / end:container
-    #overlay_block
-    .admin-form-content.sign_register_block
-      .admin-form-block
-        %form.main-form.admin-form{:action => "login.php", :method => "post"}/
-        .main_form_navigation
-          #tab_register.title-form.back
-            %span.register
-              %a{:href => "#register", :title => ""} Register
-          #tab_sign_in.title-form.current
-            %span.sign_in
-              %a{:href => "#sign_in", :title => ""} Sign In
-        #tab_sign_in_content.content-form
-          %div
-            %input#sign_in_email.input_placeholder{:maxlength => "30", :name => "email", :placeholder => "Email address", :type => "text"}/
-          %div
-            %input#sign_in_pass{:maxlength => "40", :name => "password", :placeholder => "Password", :type => "password"}/
-          %input.admin-form-submit.orange_button{:name => "login", :type => "submit", :value => "Login"}/
-          .admin_form_link
-            %span.forgot_passwd
-              %a.tab_link_button{:href => "#forgot_passwd", :title => ""} Forgot password?
-        #tab_register_content.content-form.hidden
-          %div
-            %input#register_email.input_placeholder{:maxlength => "30", :name => "register_email", :placeholder => "Email address", :type => "text", :value => ""}/
-          %div
-            %input#register_name{:maxlength => "30", :name => "register_fname", :placeholder => "First Name", :type => "text"}/
-          %div
-            %input#register_name{:maxlength => "30", :name => "register_lname", :placeholder => "Last Name", :type => "text"}/
-          .bdate_icon
-            %i.fa_bdate.fa.fa-calendar
-            %input.datepicker{:maxlength => "10", :name => "register_bdate", :placeholder => "Birth Date", :type => "text"}/
-          .bdate_icon{:style => "float:left;margin:10px 0;"}
-            %i.fa_bdate.fa.fa-phone-square
-            %input{:maxlength => "11", :name => "register_phone", :placeholder => "Cell Phone", :type => "text"}/
-          %div
-            %input#sign_in_pass{:maxlenght => "40", :name => "register_password", :placeholder => "Password", :type => "password"}/
-          %input.admin-form-submit.orange_button{:name => "register", :type => "submit", :value => "Register"}/
-          .admin_form_link
-            %span.sign_in
-              %a.tab_link_button{:href => "#sign_in", :title => ""} Already registered?
-        .clear
-    .admin-form-content.forgot_passwd_block
-      .admin-form-block
-        %form.main-form.admin-form{:action => "index.php", :method => "post"}/
-        .main_form_navigation
-          #tab_forgot_passwd.title-form.current Forgot Password?
-        #tab_forgot_passwd_content.content-form
-          %input#forgot_pass_email.input_placeholder{:name => "forgot_pass_email", :placeholder => "Email address", :type => "text", :value => ""}/
-          #forgot_pass_text We will send you the password in few minutes.
-          %input.admin-form-submit.orange_button{:name => "forgot_submit", :type => "submit", :value => "Continue"}/
-          .admin_form_link
-            %span.sign_in
-              %a.tab_link_button{:href => "#sign_in", :title => ""} Sign In
-        .clear
+      #footer-content
+        %img.site-logo{:alt => "", :src => "/assets/logo.png"}/
+        %h1.site-title Renta
+        .company-name
+          Copyright © 2014 - Developed by Burak &amp; Mali
+    / #footer-content
+    / end:footer
+  / end:container
+  #overlay_block
+  .admin-form-content.sign_register_block
+    .admin-form-block
+      %form.main-form.admin-form{:action => "login.php", :method => "post"}/
+      .main_form_navigation
+        #tab_register.title-form.back
+          %span.register
+            %a{:href => "#register", :title => ""} Register
+        #tab_sign_in.title-form.current
+          %span.sign_in
+            %a{:href => "#sign_in", :title => ""} Sign In
+      #tab_sign_in_content.content-form
+        %div
+          %input#sign_in_email.input_placeholder{:maxlength => "30", :name => "email", :placeholder => "Email address", :type => "text"}/
+        %div
+          %input#sign_in_pass{:maxlength => "40", :name => "password", :placeholder => "Password", :type => "password"}/
+        %input.admin-form-submit.orange_button{:name => "login", :type => "submit", :value => "Login"}/
+        .admin_form_link
+          %span.forgot_passwd
+            %a.tab_link_button{:href => "#forgot_passwd", :title => ""} Forgot password?
+      #tab_register_content.content-form.hidden
+        %div
+          %input#register_email.input_placeholder{:maxlength => "30", :name => "register_email", :placeholder => "Email address", :type => "text", :value => ""}/
+        %div
+          %input#register_name{:maxlength => "30", :name => "register_fname", :placeholder => "First Name", :type => "text"}/
+        %div
+          %input#register_name{:maxlength => "30", :name => "register_lname", :placeholder => "Last Name", :type => "text"}/
+        .bdate_icon
+          %i.fa_bdate.fa.fa-calendar
+          %input.datepicker{:maxlength => "10", :name => "register_bdate", :placeholder => "Birth Date", :type => "text"}/
+        .bdate_icon{:style => "float:left;margin:10px 0;"}
+          %i.fa_bdate.fa.fa-phone-square
+          %input{:maxlength => "11", :name => "register_phone", :placeholder => "Cell Phone", :type => "text"}/
+        %div
+          %input#sign_in_pass{:maxlenght => "40", :name => "register_password", :placeholder => "Password", :type => "password"}/
+        %input.admin-form-submit.orange_button{:name => "register", :type => "submit", :value => "Register"}/
+        .admin_form_link
+          %span.sign_in
+            %a.tab_link_button{:href => "#sign_in", :title => ""} Already registered?
+      .clear
+  .admin-form-content.forgot_passwd_block
+    .admin-form-block
+      %form.main-form.admin-form{:action => "index.php", :method => "post"}/
+      .main_form_navigation
+        #tab_forgot_passwd.title-form.current
+          Forgot Password?
+      #tab_forgot_passwd_content.content-form
+        %input#forgot_pass_email.input_placeholder{:name => "forgot_pass_email", :placeholder => "Email address", :type => "text", :value => ""}/
+        #forgot_pass_text
+          We will send you the password in few minutes.
+        %input.admin-form-submit.orange_button{:name => "forgot_submit", :type => "submit", :value => "Continue"}/
+        .admin_form_link
+          %span.sign_in
+            %a.tab_link_button{:href => "#sign_in", :title => ""} Sign In
+      .clear
+  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+  %script $(function(){$(".datepicker").datepicker({ dateFormat:"dd/mm/yy"})});

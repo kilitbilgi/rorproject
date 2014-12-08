@@ -21,6 +21,15 @@ class AdminController < ApplicationController
     @admin = Admin.new
   end
 
+  # GET /admin/AddCar
+  def addCar
+    @car = Car.new
+  end
+
+  def addCarComplete
+    @car = Car.new
+  end
+
   # GET /admins/1/edit
   def edit
   end

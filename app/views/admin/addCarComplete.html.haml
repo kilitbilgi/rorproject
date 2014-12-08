@@ -1,7 +1,5 @@
 #wrapper
-  / Sidebar
   %nav.navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
-    / Brand and toggle get grouped for better mobile display
     .navbar-header
       %button.navbar-toggle{"data-target" => ".navbar-ex1-collapse", "data-toggle" => "collapse", :type => "button"}
         %span.sr-only Toggle navigation
@@ -9,7 +7,6 @@
         %span.icon-bar
         %span.icon-bar
       %a.navbar-brand{:href => "index.php"} Rent A Car Control Panel1
-    / Collect the nav links, forms, and other content for toggling
     .collapse.navbar-collapse.navbar-ex1-collapse
       %ul.nav.navbar-nav.side-nav
         %li
@@ -53,7 +50,6 @@
               %a{:href => "logout.php"}
                 %i.fa.fa-power-off
                 Log Out
-  / /.navbar-collapse
   #page-wrapper
     .row
       .col-lg-12
@@ -63,14 +59,13 @@
         .alert.alert-info.alert-dismissable
           %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
           Welcome to Cars Page
-    / /.row
     .row
       .col-lg-3
         %h3 Add Car
-        %form{:action => "", :method => "post", :role => "form"}
+        %form{:action => "/admin/addCar", :method => "post", :role => "form"}
           .form-group
             %label Image URL
-            %input.form-control{:name => "car_url", :placeholder => "Enter URL"}/
+            %input.form-control{:name => "car_image", :placeholder => "Enter URL"}/
           .form-group
             %label Daily Price
             %input.form-control{:name => "car_price", :placeholder => "Enter Daily Price"}/
@@ -94,16 +89,11 @@
             %input.form-control{:name => "car_color", :placeholder => "Enter Color"}/
           .form-group
             %label Fuel
-            %select.form-control{:name => "car_fuel"}
-              %option{:value => "Diesel"} Diesel
-              %option{:value => "Gasoline"} Gasoline
-              %option{:value => "Hybrid"} Hybrid
-              %option{:value => "LPG"} LPG
-          / <input class="form-control" name="car_fuel" placeholder="Enter Fuel"/>
+            %input.form-control{:name => "car_fuel", :placeholder => "Fuel Type"}/
           .form-group
             %label HP
             %input.form-control{:name => "car_hp", :placeholder => "Enter HP"}/
-          %input{:name => "reloadCheck", :type => "hidden", :value => "1"}/
+          %input{:name => "reloadCheck", :type => "hidden", :value => "1"}
           %button.btn.btn-default{:name => "submit", :type => "submit"} Submit
       .col-lg-3
         %h3 Change Car
@@ -142,7 +132,7 @@
           .form-group
             %label HP
             %input.form-control{:name => "car_hp2", :placeholder => "Enter HP"}/
-          %button.btn.btn-default{:name => "submit2", :type => "submit"} Submit
+            %button.btn.btn-default{:name => "submit2", :type => "submit"} Submit
       .col-lg-6
         %h3 All Cars
         .results
@@ -163,7 +153,7 @@
           .form-group
             %label ID
             %input.form-control{:name => "car_id3", :placeholder => "Enter ID"}/
-          %button.btn.btn-default{:name => "submit4", :type => "submit"} Delete
+            %button.btn.btn-default{:name => "submit4", :type => "submit"} Delete
             / /.row
             / /#page-wrapper
             / /#wrapper

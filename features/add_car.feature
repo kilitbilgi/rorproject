@@ -2,10 +2,10 @@ Feature: Add a Car
   As an admin
   I want to add car
 
-  Scenario: Write a post to the blog
+  Scenario: Add a Car
     Given I am on the admin panel
-    When I click "admin/cars" link
-    And I fill "ferrari.png" as imageUrl
+    When I click "/admin/addCar" link
+    And I fill "ferrari.png" as image
     And I fill "500" as price
     And I fill "10" as stock
     And I fill "Ferrari F40 Rent" as title

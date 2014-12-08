@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  #resources :cars
+
   #resources :admins
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -9,7 +11,9 @@ Rails.application.routes.draw do
 
   post 'admin/login' => 'admin#login'
   get 'admin/cars' => 'admin#cars'
+  get 'admin/addCar'=>'admin#addCar'
   get '/admin' => 'admin#index'
+  get '/admin/Submit' => 'admin#addCarComplete'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
