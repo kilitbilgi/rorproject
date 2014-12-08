@@ -10,4 +10,8 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_tree
+//= require jquery
+//= require jquery-migrate
+//= require jquery-ui
+//= require jquery.slider.min
+//= require custom-form-elements
