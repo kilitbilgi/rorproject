@@ -15,3 +15,5 @@
 //= require jquery-ui
 //= require jquery.slider.min
 //= require custom-form-elements
+//= require jquery.selectbox
+//= require script
