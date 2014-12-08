@@ -1,9 +1,5 @@
-Given(/^I am on the admin panel$/) do
-  visit('/admin')
-end
-
-When(/^I click "(.*?)" link$/) do |link|
-  click_on link
+Given(/^I am on the add car panel$/) do
+  visit('/admin/addCar')
 end
 
 And(/^I fill "(.*?)" as car_image$/) do |url|

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post '/admin/login' => 'admin#login'
   get '/admin/cars' => 'admin#cars'
   get '/admin/addCar'=>'admin#addCar'
+  get '/admin/editCar' => 'admin#editCar'
   get '/admin' => 'admin#index'
   get '/admin/Submit' => 'admin#addCarComplete'
   # Example of regular route:

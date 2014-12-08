@@ -26,6 +26,10 @@ class AdminController < ApplicationController
     @car = Car.new
   end
 
+  def editCar
+    @car = Car.new
+  end
+
   def addCarComplete
     @car = Car.new
   end

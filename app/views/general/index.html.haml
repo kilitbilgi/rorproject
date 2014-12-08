@@ -1,6 +1,7 @@
 %head
   %title Rorproject
   %meta{:charset => "utf-8"}
+  %meta{:name => "viewport" , :content => "width=device-width, initial-scale=1"}
   = stylesheet_link_tag    'general', media: 'all', 'data-turbolinks-track' => true
   = csrf_meta_tags
   %link{:href => "http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", :rel => "stylesheet"}
@@ -9,10 +10,10 @@
     #branding
       #branding-content
         .title-content
-          %a{:href => "index.php", :title => ""}
+          %a{:href => "/", :title => ""}
             %img.site-logo{:alt => "", :src => "/assets/logo.png"}/
           %h1.site-title
-            %a{:href => "index.php", :title => ""} Renta
+            %a{:href => "/", :title => ""} Renta
         .access-content
           %ul
         / .access
@@ -219,57 +220,57 @@
     / end:footer
   / end:container
   #overlay_block
-    .admin-form-content.sign_register_block
-      .admin-form-block
-        %form.main-form.admin-form{:action => "login.php", :method => "post"}
-          .main_form_navigation
-            #tab_register.title-form.back
-              %span.register
-                %a{:href => "#register", :title => ""} Register
-            #tab_sign_in.title-form.current
-              %span.sign_in
-                %a{:href => "#sign_in", :title => ""} Sign In
-          #tab_sign_in_content.content-form
-            %div
-              %input#sign_in_email.input_placeholder{:maxlength => "30", :name => "email", :placeholder => "Email address", :type => "text"}/
-            %div
-              %input#sign_in_pass{:maxlength => "40", :name => "password", :placeholder => "Password", :type => "password"}/
-            %input.admin-form-submit.orange_button{:name => "login", :type => "submit", :value => "Login"}/
-            .admin_form_link
-              %span.forgot_passwd
-                %a.tab_link_button{:href => "#forgot_passwd", :title => ""} Forgot password?
-          #tab_register_content.content-form.hidden
-            %div
-              %input#register_email.input_placeholder{:maxlength => "30", :name => "register_email", :placeholder => "Email address", :type => "text", :value => ""}/
-            %div
-              %input#register_name{:maxlength => "30", :name => "register_fname", :placeholder => "First Name", :type => "text"}/
-            %div
-              %input#register_name{:maxlength => "30", :name => "register_lname", :placeholder => "Last Name", :type => "text"}/
-            .bdate_icon
-              %i.fa_bdate.fa.fa-calendar
-              %input.datepicker{:maxlength => "10", :name => "register_bdate", :placeholder => "Birth Date", :type => "text"}/
-            .bdate_icon{:style => "float:left;margin:10px 0;"}
-              %i.fa_bdate.fa.fa-phone-square
-              %input{:maxlength => "11", :name => "register_phone", :placeholder => "Cell Phone", :type => "text"}/
-            %div
-              %input#sign_in_pass{:maxlenght => "40", :name => "register_password", :placeholder => "Password", :type => "password"}/
-            %input.admin-form-submit.orange_button{:name => "register", :type => "submit", :value => "Register"}/
+  .admin-form-content.sign_register_block
+    .admin-form-block
+      %form.main-form.admin-form{:action => "login.php", :method => "post"}
+        .main_form_navigation
+          #tab_register.title-form.back
+            %span.register
+              %a{:href => "#register", :title => ""} Register
+          #tab_sign_in.title-form.current
+            %span.sign_in
+              %a{:href => "#sign_in", :title => ""} Sign In
+        #tab_sign_in_content.content-form
+          %div
+            %input#sign_in_email.input_placeholder{:maxlength => "30", :name => "email", :placeholder => "Email address", :type => "text"}
+          %div
+            %input#sign_in_pass{:maxlength => "40", :name => "password", :placeholder => "Password", :type => "password"}
+          %input.admin-form-submit.orange_button{:name => "login", :type => "submit", :value => "Login"}
+          .admin_form_link
+            %span.forgot_passwd
+              %a.tab_link_button{:href => "#forgot_passwd", :title => ""} Forgot password?
+        #tab_register_content.content-form.hidden
+          %div
+            %input#register_email.input_placeholder{:maxlength => "30", :name => "register_email", :placeholder => "Email address", :type => "text", :value => ""}
+          %div
+            %input#register_name{:maxlength => "30", :name => "register_fname", :placeholder => "First Name", :type => "text"}
+          %div
+            %input#register_name{:maxlength => "30", :name => "register_lname", :placeholder => "Last Name", :type => "text"}
+          .bdate_icon
+            %i.fa_bdate.fa.fa-calendar
+            %input.datepicker{:maxlength => "10", :name => "register_bdate", :placeholder => "Birth Date", :type => "text"}
+          .bdate_icon{:style => "float:left;margin:10px 0;"}
+            %i.fa_bdate.fa.fa-phone-square
+            %input{:maxlength => "11", :name => "register_phone", :placeholder => "Cell Phone", :type => "text"}
+          %div
+            %input#sign_in_pass{:maxlenght => "40", :name => "register_password", :placeholder => "Password", :type => "password"}
+          %input.admin-form-submit.orange_button{:name => "register", :type => "submit", :value => "Register"}
             .admin_form_link
               %span.sign_in
                 %a.tab_link_button{:href => "#sign_in", :title => ""} Already registered?
-      .clear
-        .admin-form-content.forgot_passwd_block
-          .admin-form-block
-            %form.main-form.admin-form{:action => "index.php", :method => "post"}
-            .main_form_navigation
-              #tab_forgot_passwd.title-form.current Forgot Password?
-            #tab_forgot_passwd_content.content-form
-              %input#forgot_pass_email.input_placeholder{:name => "forgot_pass_email", :placeholder => "Email address", :type => "text", :value => ""}/
-              #forgot_pass_text We will send you the password in few minutes.
-              %input.admin-form-submit.orange_button{:name => "forgot_submit", :type => "submit", :value => "Continue"}/
-              .admin_form_link
-                %span.sign_in
-                  %a.tab_link_button{:href => "#sign_in", :title => ""} Sign In
-      .clear
-  = javascript_include_tag 'application', 'data-turbolinks-track' => true
+        .clear
+    .admin-form-content.forgot_passwd_block
+      .admin-form-block
+        %form.main-form.admin-form{:action => "index.php", :method => "post"}
+          .main_form_navigation
+            #tab_forgot_passwd.title-form.current Forgot Password?
+          #tab_forgot_passwd_content.content-form
+            %input#forgot_pass_email.input_placeholder{:name => "forgot_pass_email", :placeholder => "Email address", :type => "text", :value => ""}
+            #forgot_pass_text We will send you the password in few minutes.
+            %input.admin-form-submit.orange_button{:name => "forgot_submit", :type => "submit", :value => "Continue"}
+            .admin_form_link
+              %span.sign_in
+                %a.tab_link_button{:href => "#sign_in", :title => ""} Sign In
+          .clear
+  =javascript_include_tag 'application', 'data-turbolinks-track' => true
   %script $(function(){$(".datepicker").datepicker({ dateFormat:"dd/mm/yy"})});
