@@ -6,6 +6,10 @@
   = csrf_meta_tags
   %link{:href => "http:maxcdn.bootstrapcdn.comfont-awesome4.2.0cssfont-awesome.min.css", :rel => "stylesheet"}
 %body.center-slider.one-column.middle-sidebar
+  - if flash["success"]
+    = flash["success"]
+  - if flash["error"]
+    = flash["error"]
   #conteiner
     #branding
       #branding-content
@@ -58,21 +62,16 @@
         %aside.sidebar-left
           .widget.widget-features
             %h3.widget-title
-              %img{:alt => "", :src => "assetslamp.png"}
+              %img{:alt => "", :src => "assets/lamp.png"}
               Find Us
             .clear{:style => "padding-bottom:1px"}
-            %script{:src => "http:maps.google.commapsapijs?sensor=false", :type => "textjavascript"}
-            %div{:style => "overflow:hidden;height:250px;width:299px;"}
-              #gmap_canvas{:style => "height:250px;width:300px;"}
-              :css
-                #gmap_canvas img{max-width:none!important;background:none!important}
-                                              %a#get-map-data.google-map-code{:href => "http:www.mapsembed.com"} http:www.mapsembed.com
-            %script function init_map(){var myOptions = {zoom:17,center:new google.maps.LatLng(38.581184,26.963882000000012),mapTypeId: google.maps.MapTypeId.SATELLITE};map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(38.581184, 26.963882000000012)});infowindow = new google.maps.InfoWindow({content:"RentaGediz Gediz &Uuml;nv" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);      .sidebar-middle
+            %div{:style => "height:250px;width:299px;"}
+              %iframe{:frameborder => "0", :height => "350", :marginheight => "0", :marginwidth => "0", :scrolling => "no", :src => "http://maps.google.com/maps?f=q&amp;ie=UTF8&amp;ll=51.069017,-114.082031&amp;spn=7.747835,23.24707&amp;z=6&amp;output=embed", :width => "299"}
         .sidebar-middle
           .widget.main-widget
             .widget-title
               %div
-                %img{:alt => "", :src => "assetslatest.png"}
+                %img{:alt => "", :src => "assets/latest.png"}
                 Last 3 Added Cars
               .clear
             .post
@@ -80,7 +79,7 @@
                 %span Nissan
               .entry-content
                 %div{:style => "float:left;"}
-                  %img{:height => "76", :src => "assetsmaxima.png", :width => "149"}
+                  %img{:height => "76", :src => "assets/maxima.png", :width => "149"}
                 %div{:style => "margin-left:30px;float:left;"}
                   %ul
                     %li.lastadded
@@ -101,7 +100,7 @@
                 %span Renault
               .entry-content
                 %div{:style => "float:left;"}
-                  %img{:height => "76", :src => "assetsclio.png", :width => "149"}
+                  %img{:height => "76", :src => "assets/clio.png", :width => "149"}
                 %div{:style => "margin-left:30px;float:left;"}
                   %ul
                     %li.lastadded
@@ -122,7 +121,7 @@
                 %span Ferrari
               .entry-content
                 %div{:style => "float:left;"}
-                  %img{:height => "76", :src => "assetsferrari-enzo.png", :width => "149"}
+                  %img{:height => "76", :src => "assets/ferrari-enzo.png", :width => "149"}
                 %div{:style => "margin-left:30px;float:left;"}
                   %ul
                     %li.lastadded
@@ -141,22 +140,22 @@
         %aside.sidebar-right
           .widget
             %h3.widget-title
-              %img{:alt => "lamp", :src => "assetslamp.png"}
+              %img{:alt => "lamp", :src => "assets/lamp.png"}
               Social Media
             .widget-content
               %a{:href => "http:www.facebook.com"}
-                %img{:alt => "Facebook", :src => "assetsfb-social.png"}
+                %img{:alt => "Facebook", :src => "assets/fb-social.png"}
               %a{:href => "http:www.twitter.com"}
-                %img{:alt => "Twitter", :src => "assetstw-social.png"}
+                %img{:alt => "Twitter", :src => "assets/tw-social.png"}
               %a{:href => "http:plus.google.com"}
-                %img{:alt => "Google Plus", :src => "assetsgplus-social.png"}
+                %img{:alt => "Google Plus", :src => "assets/gplus-social.png"}
               %a{:href => "http:www.linkedin.com"}
-                %img{:alt => "Linkedin", :src => "assetsin-social.png"}
+                %img{:alt => "Linkedin", :src => "assets/in-social.png"}
               %a{:href => "http:www.skype.com"}
-                %img{:alt => "Skype", :src => "assetsskype-social.png"}
+                %img{:alt => "Skype", :src => "assets/skype-social.png"}
           .widget
             %h3.widget-title
-              %img{:alt => "", :src => "assetslamp.png"}
+              %img{:alt => "", :src => "assets/lamp.png"}
               Car Brands
             %ul
               %li.even
@@ -177,7 +176,7 @@
           .clear
           .footer-widget-single
             %h3{:style => "color:#444c57"}
-              %img{:alt => "star", :src => "assetsstar.png", :style => "padding-right:6px;"}>
+              %img{:alt => "star", :src => "assets/star.png", :style => "padding-right:6px;"}>
               Latest News From Our Blog
             %div{:style => "width:360px;padding-top:5px;"}
               %ol
@@ -195,7 +194,7 @@
             .recent_tweets_url
               %a{:href => "http:www.kilitbilgi.com", :target => "_blank", :title => ""} http:www.kilitbilgi.com
           .support.footer-widget-single
-            %img{:alt => "", :src => "assetssupport-icon.png"}
+            %img{:alt => "", :src => "assets/support-icon.png"}
             .title
               Online support
             .phone
@@ -204,14 +203,14 @@
               %a{:href => "mailto:sales@example.com", :title => "Contact Us"} sales@example.com
           .clear
       #footer-content
-        %img.site-logo{:alt => "", :src => "assetslogo.png"}
+        %img.site-logo{:alt => "", :src => "assets/logo.png"}
         %h1.site-title Renta
         .company-name
-          Copyright © 2014 - Developed by Burak &amp; Mali
+          Copyright © 2014 - Developed by Burak &amp; Mali &amp; Serhat
   #overlay_block
   .admin-form-content.sign_register_block
     .admin-form-block
-      %form.main-form.admin-form{:action => "login.php", :method => "post"}
+      %form.main-form.admin-form{:action => "register", :method => "post"}
         .main_form_navigation
           #tab_register.title-form.back
             %span.register
@@ -242,7 +241,7 @@
             %i.fa_bdate.fa.fa-phone-square
             %input{:maxlength => "11", :name => "register_phone", :placeholder => "Cell Phone", :type => "text"}
           %div
-            %input#sign_in_pass{:maxlenght => "40", :name => "register_password", :placeholder => "Password", :type => "password"}
+            %input#sign_in_pass{:maxlenght => "40", :name => "password", :placeholder => "Password", :type => "password"}
           %input.admin-form-submit.orange_button{:name => "register", :type => "submit", :value => "Register"}
             .admin_form_link
               %span.sign_in
@@ -262,4 +261,4 @@
                 %a.tab_link_button{:href => "#sign_in", :title => ""} Sign In
           .clear
   =javascript_include_tag 'application', 'data-turbolinks-track' => true
-  %script $(function(){$(".datepicker").datepicker({ dateFormat:"ddmmyy"})});
+  %script $(function(){$(".datepicker").datepicker({ dateFormat:"dd/mm/yy"})});

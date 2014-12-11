@@ -25,9 +25,9 @@ development:
 cucumber:
   <<: *test
 
-#development:
-#  adapter: postgresql
-#  host: 'ec2-54-225-157-157.compute-1.amazonaws.com'
-#  username: 'llxaabzuyauvni'
-#  database: 'dd6sn5903aaap4'
-#  password: '5SopTzuz1tUr9jBp9WSy4ULPD3'
+production:
+ adapter: postgresql
+ host: 'ec2-54-225-157-157.compute-1.amazonaws.com'
+ username: 'llxaabzuyauvni'
+ database: 'dd6sn5903aaap4'
+ password: '5SopTzuz1tUr9jBp9WSy4ULPD3'

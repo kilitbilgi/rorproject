@@ -1,21 +1,21 @@
 require 'rails_helper'
 
-describe Member do
+describe Admin do
 
   describe "creation" do
 
     context "valid attributes" do
 
       it "should be valid" do
-        member = Member.new(
-            :id => "1",
-            :email=> "kilitbilgi@gmail.com",
-            :crypted_password=> "0216bc0c772943170d79ea602bbd4184",
-            :salt=> "0216bc0c7",
+        admin = Admin.new(
+            :fname => "burak",
+            :lname => "çolak",
+            :password => "123456",
+            :email => "kilitbilgi@gmail.com",
             :updated_at => DateTime.now ,
             :created_at =>DateTime.now
         )
-        member.should be_valid
+        admin.should be_valid
       end
 
     end

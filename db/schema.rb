@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 20141208184021) do
     t.string   "salt",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "fname"
+    t.text     "lname"
   end
 
   add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree

@@ -1,6 +1,7 @@
 Feature: Add a Car
   As an admin
   I want to add car
+  So that admin can add car to his stock
 
   Scenario: Add a Car
     Given I am on the add car panel

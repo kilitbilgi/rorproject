@@ -139,6 +139,7 @@ Rails.application.config.sorcery.configure do |config|
   # config.liveid.callback_url = "http://mydomain.com:3000/oauth/callback?provider=liveid"
   # config.liveid.user_info_mapping = {:username => "name"}
 
+  Rails.application.config.sorcery.submodules = [:http_basic_auth]
 
   # --- user config ---
   config.user_config do |user|
