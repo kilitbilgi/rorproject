@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b691a38d-fec0-4964-af2c-ee90d3e7581f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/features/add_car.feature" afterPath="$PROJECT_DIR$/features/add_car.feature" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spec/models/admin_spec.rb" afterPath="$PROJECT_DIR$/spec/models/admin_spec.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/general/choose_car.html.haml" afterPath="$PROJECT_DIR$/app/views/general/choose_car.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources.xml" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/database.yml" afterPath="$PROJECT_DIR$/config/database.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/general/index.html.haml" afterPath="$PROJECT_DIR$/app/views/general/index.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/member_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/member_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/rorproject.iml" afterPath="$PROJECT_DIR$/.idea/rorproject.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/sorcery.rb" afterPath="$PROJECT_DIR$/config/initializers/sorcery.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="b691a38d-fec0-4964-af2c-ee90d3e7581f" name="Default" comment="" />
     <ignored path="rorproject.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/tmp/" />
