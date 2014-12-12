@@ -6,10 +6,11 @@
   = csrf_meta_tags
   %link{:href => "http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css", :rel => "stylesheet"}
 %body.center-slider.one-column.middle-sidebar
-  - if flash["success"]
-    = flash["success"]
-  - if flash["error"]
-    = flash["error"]
+  - if flash["login_success"]
+    %script{:type=>"text/javascript"}
+      alert("Login success");
+  - if flash["login_error"]
+    = flash["login_error"]
   #conteiner
     #branding
       #branding-content
@@ -22,10 +23,18 @@
           %ul
         .menus-content
           .member
-            %span.sign_in
-              %a.sign_button.tab_link_button{:href => "#sign_in", :title => ""} Sign in
-            %span.register
-              %a.sign_button.tab_link_button{:href => "#register", :title => ""} Register
+            -if session[:user_id]
+              %p{:style => "float:right;margin:10px 5px 0 0;"}
+                %i.fa.fa-user{:style => "padding-right:3px;"}
+                =@welcome_name
+                %br
+                %i.fa.fa-sign-out{:style => "padding-right:3px;"}
+                %a{:href => "logout"} Logout
+            -else
+              %span.sign_in
+                %a.sign_button.tab_link_button{:href => "#sign_in", :title => ""} Sign in
+              %span.register
+                %a.sign_button.tab_link_button{:href => "#register", :title => ""} Register
       .clear
     #slider
       #slider-img
@@ -210,46 +219,49 @@
   #overlay_block
   .admin-form-content.sign_register_block
     .admin-form-block
-      %form.main-form.admin-form{:action => "register", :method => "post"}
-        .main_form_navigation
-          #tab_register.title-form.back
-            %span.register
-              %a{:href => "#register", :title => ""} Register
-          #tab_sign_in.title-form.current
-            %span.sign_in
-              %a{:href => "#sign_in", :title => ""} Sign In
-        #tab_sign_in_content.content-form
+      .main_form_navigation
+        #tab_register.title-form.back
+          %span.register
+            %a{:href => "#register", :title => ""} Register
+        #tab_sign_in.title-form.current
+          %span.sign_in
+            %a{:href => "#sign_in", :title => ""} Sign In
+      #tab_sign_in_content.content-form
+        %form.main-form.admin-form{:action => "login", :method => "post"}
+          %input{name: "authenticity_token", type: "hidden", value: session[:_csrf_token]}
+            %div
+              %input#sign_in_email.input_placeholder{:maxlength => "30", :name => "email_login", :placeholder => "Email address", :type => "text"}
+            %div
+              %input#sign_in_pass{:maxlength => "40", :name => "password_login", :placeholder => "Password", :type => "password"}
+            %input.admin-form-submit.orange_button{:name => "member[login]", :type => "submit", :value => "Login"}
+            .admin_form_link
+              %span.forgot_passwd
+                %a.tab_link_button{:href => "#forgot_passwd", :title => ""} Forgot password?
+      #tab_register_content.content-form.hidden
+        %form.main-form.admin-form{:action => "register", :method => "post"}
+          %input{name: "authenticity_token", type: "hidden", value: session[:_csrf_token]}
           %div
-            %input#sign_in_email.input_placeholder{:maxlength => "30", :name => "email", :placeholder => "Email address", :type => "text"}
+            %input#register_email.input_placeholder{:maxlength => "30", :name => "member[email]", :placeholder => "Email address", :type => "text", :value => ""}
           %div
-            %input#sign_in_pass{:maxlength => "40", :name => "password", :placeholder => "Password", :type => "password"}
-          %input.admin-form-submit.orange_button{:name => "login", :type => "submit", :value => "Login"}
-          .admin_form_link
-            %span.forgot_passwd
-              %a.tab_link_button{:href => "#forgot_passwd", :title => ""} Forgot password?
-        #tab_register_content.content-form.hidden
+            %input#register_name{:maxlength => "30", :name => "member[fname]", :placeholder => "First Name", :type => "text"}
           %div
-            %input#register_email.input_placeholder{:maxlength => "30", :name => "register_email", :placeholder => "Email address", :type => "text", :value => ""}
-          %div
-            %input#register_name{:maxlength => "30", :name => "register_fname", :placeholder => "First Name", :type => "text"}
-          %div
-            %input#register_name{:maxlength => "30", :name => "register_lname", :placeholder => "Last Name", :type => "text"}
+            %input#register_name{:maxlength => "30", :name => "member[lname]", :placeholder => "Last Name", :type => "text"}
           .bdate_icon
             %i.fa_bdate.fa.fa-calendar
-            %input.datepicker{:maxlength => "10", :name => "register_bdate", :placeholder => "Birth Date", :type => "text"}
+            %input.datepicker{:maxlength => "10", :name => "member[birthdate]", :placeholder => "Birth Date", :type => "text"}
           .bdate_icon{:style => "float:left;margin:10px 0;"}
             %i.fa_bdate.fa.fa-phone-square
-            %input{:maxlength => "11", :name => "register_phone", :placeholder => "Cell Phone", :type => "text"}
+            %input{:maxlength => "11", :name => "member[cellphone]", :placeholder => "Cell Phone", :type => "text"}
           %div
-            %input#sign_in_pass{:maxlenght => "40", :name => "password", :placeholder => "Password", :type => "password"}
-          %input.admin-form-submit.orange_button{:name => "register", :type => "submit", :value => "Register"}
+            %input#sign_in_pass{:maxlenght => "40", :name => "member[password]", :placeholder => "Password", :type => "password"}
+          %input.admin-form-submit.orange_button{:name => "member[register]", :type => "submit", :value => "Register"}
             .admin_form_link
               %span.sign_in
                 %a.tab_link_button{:href => "#sign_in", :title => ""} Already registered?
         .clear
     .admin-form-content.forgot_passwd_block
       .admin-form-block
-        %form.main-form.admin-form{:action => "index.php", :method => "post"}
+        %form.main-form.admin-form{:action => root_path, :method => "post"}
           .main_form_navigation
             #tab_forgot_passwd.title-form.current Forgot Password?
           #tab_forgot_passwd_content.content-form

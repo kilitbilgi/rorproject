@@ -8,7 +8,7 @@
         #output
         .avatar
         .form-box
-          %form{:action => "admins/login", :method => "post"}
+          %form{:action => "admin/login", :method => "post"}
             %input{name: "authenticity_token", type: "hidden", value: session[:_csrf_token]}
             %input{:autofocus => "", :name => "admin[email]", :placeholder => "email address", :required => "", :type => "text"}
               %input{:name => "password", :placeholder => "admin[password]", :required => "", :type => "password"}

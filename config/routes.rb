@@ -9,9 +9,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'general#index'
+  root :to => 'general#index'
 
-  post '/register' => 'member#register'
+  post '/register' => 'members#create'
+  post '/login' => 'session#create'
   post '/admin/login' => 'admin#login'
   get '/admin/cars' => 'admin#cars'
   get '/admin/addCar'=>'admin#addCar'
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   get '/admin' => 'admin#index'
   get '/admin/Submit' => 'admin#addCarComplete'
   get '/choose_car' , to:'general#choose_car'
+  get '/logout' => 'session#destroy'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
