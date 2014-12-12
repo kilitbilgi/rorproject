@@ -7,9 +7,14 @@ class CarsController < ApplicationController
     @cars = Car.all
   end
 
+  def new
+    @car = Car.new
+  end
+
   # GET /cars/1
   # GET /cars/1.json
   def show
+    @car = Car.new
   end
 
   # GET /cars/1/edit

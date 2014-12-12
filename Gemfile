@@ -6,8 +6,8 @@ gem 'unicorn'
 gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
-#Session control
-gem 'sorcery'
+
+gem "bcrypt-ruby", :require => "bcrypt"
 
 gem 'haml'
 

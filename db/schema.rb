@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 20141208184021) do
   create_table "members", force: true do |t|
     t.string   "email",            null: false
     t.string   "crypted_password", null: false
-    t.string   "salt",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "fname"

@@ -1,6 +1,5 @@
-class MemberController < ApplicationController
+class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
-  skip_before_filter :verify_authenticity_token
 
   # GET /members
   # GET /members.json
@@ -16,29 +15,6 @@ class MemberController < ApplicationController
   # GET /members/new
   def new
     @member = Member.new
-  end
-
-  def login
-
-  end
-
-  def register
-    Member.create(fname:params[':register_fname'],lname:params[':register_lname'],email:params[':register_email'])
-    redirect_to '/'
-    #Check for register or login
-    if params[":register"]
-      @member = Member.create(fname:params[':register_fname'],lname:params[':register_lname'],email:params[':register_email'])
-      #@member.email = params[:email]
-      if @member
-        flash["success"] = "Thanks for registering!"
-        redirect_to '/'
-      else
-        flash["error"] = "Registration error"
-        redirect_to '/'
-      end
-    else
-      redirect_to '/'
-    end
   end
 
   # GET /members/1/edit
@@ -93,6 +69,6 @@ class MemberController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def member_params
-      params[:member]
+      params.require(:member).permit(:email, :password, :fname, :lname)
     end
 end
