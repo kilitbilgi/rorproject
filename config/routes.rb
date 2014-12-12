@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/admin/Submit' => 'admin#addCarComplete'
   get '/choose_car' , to:'general#choose_car'
   get '/logout' => 'session#destroy'
+  get '*path' => redirect('/')
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
