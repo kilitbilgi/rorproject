@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208184021) do
+ActiveRecord::Schema.define(version: 20141214111502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "admins", force: true do |t|
-    t.string   "email",      null: false
-    t.string   "password_hash",   null: false
-    t.string   "password_salt", null:false
+    t.string   "email",         null: false
+    t.string   "password_hash", null: false
+    t.string   "password_salt", null: false
     t.date     "birthdate"
     t.string   "cellphone"
     t.datetime "created_at"
@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(version: 20141208184021) do
   end
 
   create_table "members", force: true do |t|
-    t.string   "email",      null: false
-    t.string   "password_hash",   null: false
-    t.string   "password_salt", null:false
+    t.string   "email",         null: false
+    t.string   "password_hash", null: false
+    t.string   "password_salt", null: false
     t.date     "birthdate"
     t.string   "cellphone"
     t.datetime "created_at"
@@ -56,5 +56,15 @@ ActiveRecord::Schema.define(version: 20141208184021) do
   end
 
   add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
+
+  create_table "rentals", force: true do |t|
+    t.string   "location"
+    t.date     "pickupdate"
+    t.date     "dropoffdate"
+    t.integer  "cars_id"
+    t.integer  "members_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

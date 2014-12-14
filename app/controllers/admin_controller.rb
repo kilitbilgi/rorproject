@@ -1,9 +1,10 @@
 class AdminController < ApplicationController
-
   # GET /admins
   # GET /admins.json
   def index
-
+    if session[:admin_id]
+      redirect_to admin_main_path
+    end
   end
 
   # GET /admins/1
@@ -12,15 +13,17 @@ class AdminController < ApplicationController
   end
 
   def cars
-
+    render :layout => 'admin_layout'
+    @all_cars = Car.all
   end
 
   def main
+    render :layout => 'admin_layout'
     if session[:admin_id]
       admin = Admin.find_by_id(session[:admin_id])
-      @admin_name = admin.fname + " " +admin.lname
+      session[:full_name] = admin.fname + " " +admin.lname
     else
-      redirect_to root_path
+      redirect_to admin_path
     end
   end
 
@@ -42,11 +45,18 @@ class AdminController < ApplicationController
   end
 
   # GET /admin/AddCar
-  def addCar
+  def add_car
+    render :layout => 'admin_layout'
     @car = Car.new
   end
 
-  def editCar
+  def add_car_complete
+    render :layout => 'admin_layout'
+    @car = Car.new(car_params)
+  end
+
+
+  def edit_car
     @car = Car.new
   end
 
@@ -94,4 +104,9 @@ class AdminController < ApplicationController
     session[:admin_id] = nil
     redirect_to admin_path
   end
+
+  private
+    def member_params
+      params.require(:car).permit(:image, :price, :stock, :title , :birthdate, :cellphone)
+    end
 end

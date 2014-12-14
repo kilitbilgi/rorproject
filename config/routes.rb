@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  resources :members
-
-  resources :cars
-
-  #resources :admins
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -16,10 +10,12 @@ Rails.application.routes.draw do
 
   post '/admin/login' => 'admin#login'
   get '/admin/cars' => 'admin#cars'
-  get '/admin/addCar'=>'admin#addCar'
-  get '/admin/editCar' => 'admin#editCar'
+  get '/admin/addCar'=>'admin#add_car'
+  get '/admin/editCar' => 'admin#edit_car'
+  get '/admin/updateCar'=>'admin#update_car'
+  get '/admin/deleteCar' => 'admin#delete_car'
   get '/admin' => 'admin#index'
-  get '/admin/Submit' => 'admin#addCarComplete'
+  get '/admin/addCarComplete' => 'admin#add_car_complete'
   get '/admin/main' => 'admin#main'
   get '/admin/logout' => 'admin#destroy'
 
