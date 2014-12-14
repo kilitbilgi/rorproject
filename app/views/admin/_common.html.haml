@@ -5,11 +5,11 @@
       %span.icon-bar
       %span.icon-bar
       %span.icon-bar
-    %a.navbar-brand{:href => "/admin/main"} Rent A Car Control Panel1
+    %a.navbar-brand{:href => admin_main_path} Rent A Car Control Panel1
   .collapse.navbar-collapse.navbar-ex1-collapse
     %ul.nav.navbar-nav.side-nav
       %li
-        %a{:href => "/admin/main"}
+        %a{:href => admin_main_path}
           %i.fa.fa-dashboard
           Dashboard
       %li
@@ -19,11 +19,11 @@
           %i{:class=>"fa fa-fw fa-caret-down"}
         %ul{:id => "members", :class=>"collapse"}
           %li
-            %a{:href=>"/admin/members"} View Members
+            %a{:href=>admin_members_path} View Members
           %li
-            %a{:href=>"/admin/changeMember"} Change Member
+            %a{:href=>admin_changeMember_path} Change Member
           %li
-            %a{:href=>"/admin/deleteMember"} Delete Member
+            %a{:href=>admin_deleteMember_path} Delete Member
       %li
         %a{:href=> "javascript:;", "data-toggle"=> "collapse" , "data-target"=>"#cars"}
           %i{:class=>"fa fa-fw fa-car"}
@@ -31,21 +31,21 @@
           %i{:class=>"fa fa-fw fa-caret-down"}
         %ul{:id => "cars", :class=>"collapse"}
           %li
-            %a{:href=>'/admin/cars'} View Cars
+            %a{:href=>admin_cars_path} View Cars
           %li
-            %a{:href=>'/admin/addCar'} Add Car
+            %a{:href=>admin_addCar_path} Add Car
           %li
-            %a{:href=>"/admin/changeCar"} Change Car
+            %a{:href=>admin_changeCar_path} Change Car
           %li
-            %a{:href=>"/admin/changeStock"} Change Stock
+            %a{:href=>admin_changeStock_path} Change Stock
           %li
-            %a{:href=>"/admin/deleteCar"} Delete Car
+            %a{:href=>admin_deleteCar_path} Delete Car
       %li
-        %a{:href => "/admin/rentals"}
+        %a{:href => admin_rentals_path}
           %i.fa.fa-tasks
           Rentals
       %li
-        %a{:href => "/admin/options"}
+        %a{:href => admin_options_path}
           %i.fa.fa-edit
           Options
     %ul.nav.navbar-nav.navbar-right.navbar-user
@@ -61,7 +61,7 @@
               Home
           %li.divider
           %li
-            %a{:href => "options.php"}
+            %a{:href => admin_options_path}
               %i.fa.fa-gear
               Options
           %li.divider
