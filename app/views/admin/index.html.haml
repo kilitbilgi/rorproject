@@ -1,15 +1,18 @@
 %head
   %title Rorproject
-  = stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true
+  = stylesheet_link_tag    'admin_login', media: 'all', 'data-turbolinks-track' => true
   = javascript_include_tag 'application', 'data-turbolinks-track' => true
-  %body
-    .container
-      .login-container
-        #output
-        .avatar
-        .form-box
-          %form{:action => "admins/login", :method => "post"}
-            %input{name: "authenticity_token", type: "hidden", value: session[:_csrf_token]}
-            %input{:autofocus => "", :name => "admin[email]", :placeholder => "email address", :required => "", :type => "text"}
-              %input{:name => "password", :placeholder => "admin[password]", :required => "", :type => "password"}
-                %button.btn.btn-info.btn-block.login{:type => "submit"} Login
+%body
+  - if flash["login_error"]
+    %script{:type=>"text/javascript"}
+      alert("Login error");
+  .container
+    .login-container
+      #output
+      .avatar
+      .form-box
+        %form{:action => "/admin/login", :method => "post"}
+          %input{name: "authenticity_token", type: "hidden", value: session[:_csrf_token]}
+          %input{:autofocus => "", :name => "admin_email", :placeholder => "email address", :required => "", :type => "text"}
+          %input{:name => "admin_password", :placeholder => "Password", :required => "", :type => "password"}
+          %button.btn.btn-info.btn-block.login{:type => "submit"} Login

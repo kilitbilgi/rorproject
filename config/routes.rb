@@ -13,15 +13,19 @@ Rails.application.routes.draw do
 
   post '/register' => 'members#create'
   post '/login' => 'session#create'
+
   post '/admin/login' => 'admin#login'
   get '/admin/cars' => 'admin#cars'
   get '/admin/addCar'=>'admin#addCar'
   get '/admin/editCar' => 'admin#editCar'
   get '/admin' => 'admin#index'
   get '/admin/Submit' => 'admin#addCarComplete'
+  get '/admin/main' => 'admin#main'
+  get '/admin/logout' => 'admin#destroy'
+
   get '/choose_car' , to:'general#choose_car'
+
   get '/logout' => 'session#destroy'
-  get '*path' => redirect('/')
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

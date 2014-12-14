@@ -17,12 +17,15 @@ ActiveRecord::Schema.define(version: 20141208184021) do
   enable_extension "plpgsql"
 
   create_table "admins", force: true do |t|
-    t.string   "fname"
-    t.string   "lname"
-    t.string   "password"
-    t.string   "email"
+    t.string   "email",      null: false
+    t.string   "password_hash",   null: false
+    t.string   "password_salt", null:false
+    t.date     "birthdate"
+    t.string   "cellphone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "fname"
+    t.text     "lname"
   end
 
   create_table "cars", force: true do |t|

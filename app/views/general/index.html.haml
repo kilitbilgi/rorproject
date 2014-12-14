@@ -10,7 +10,8 @@
     %script{:type=>"text/javascript"}
       alert("Login success");
   - if flash["login_error"]
-    = flash["login_error"]
+    %script{:type=>"text/javascript"}
+      alert("Login error");
   #conteiner
     #branding
       #branding-content

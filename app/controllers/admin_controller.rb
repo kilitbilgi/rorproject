@@ -1,10 +1,9 @@
 class AdminController < ApplicationController
-  before_action :set_admin, only: [:show, :edit, :update, :destroy]
 
   # GET /admins
   # GET /admins.json
   def index
-    @admins = Admin.all
+
   end
 
   # GET /admins/1
@@ -14,6 +13,27 @@ class AdminController < ApplicationController
 
   def cars
 
+  end
+
+  def main
+    if session[:admin_id]
+      admin = Admin.find_by_id(session[:admin_id])
+      @admin_name = admin.fname + " " +admin.lname
+    else
+      redirect_to root_path
+    end
+  end
+
+  def login
+    admin = Admin.authenticate(params[:admin_email], params[:admin_password])
+    if admin
+      session[:admin_id] = admin.id
+      flash[:admin_success] = "Logged in!"
+      redirect_to admin_main_path
+    else
+      flash[:login_error] = "Invalid email or password"
+      redirect_to admin_path
+    end
   end
 
   # GET /admins/new
@@ -71,21 +91,7 @@ class AdminController < ApplicationController
   # DELETE /admins/1
   # DELETE /admins/1.json
   def destroy
-    @admin.destroy
-    respond_to do |format|
-      format.html { redirect_to admins_url, notice: 'Admin was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    session[:admin_id] = nil
+    redirect_to admin_path
   end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_admin
-      @admin = Admin.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def admin_params
-      params[:admin]
-    end
 end

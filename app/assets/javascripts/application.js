@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require bootstrap
 //= require jquery-migrate
 //= require jquery-ui
 //= require jquery.slider.min
