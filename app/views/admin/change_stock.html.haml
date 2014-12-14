@@ -1,0 +1,22 @@
+=render "common"
+#page-wrapper
+  .row
+    .col-lg-12
+      %h1
+        Cars
+        %small
+      .alert.alert-info.alert-dismissable
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+        Welcome to Cars Page
+  .row
+    .col-lg-10
+      %h3 Change Stock Availability
+      %form{:action => "/admin/changeCarComplete", :method => "post", :role => "form"}
+        %input{name: "authenticity_token", type: "hidden", value: session[:_csrf_token]}
+        .form-group
+          %label ID
+          %input.form-control{:name => "car_id", :placeholder => "Enter ID"}
+        .form-group
+          %label Stock
+          %input.form-control{:name => "car[stock]", :placeholder => "Enter Stock"}
+        %button.btn.btn-default{:name => "submit", :type => "submit"} Update

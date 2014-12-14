@@ -19,13 +19,11 @@
           %i{:class=>"fa fa-fw fa-caret-down"}
         %ul{:id => "members", :class=>"collapse"}
           %li
-            %a{:href=>'/admin/addCar'} Add Car
+            %a{:href=>"/admin/changeMember"} Change Member
           %li
-            %a{:href=>"/admin/deleteCar"} Change Car
+            %a{:href=>"/admin/updateMember"} Update Member
           %li
-            %a{:href=>"/admin/updateCar"} Update Car
-          %li
-            %a{:href=>"/admin/deleteCar"} Delete Car
+            %a{:href=>"/admin/deleteMember"} Delete Member
       %li
         %a{:href=> "javascript:;", "data-toggle"=> "collapse" , "data-target"=>"#cars"}
           %i{:class=>"fa fa-fw fa-car"}
@@ -33,11 +31,13 @@
           %i{:class=>"fa fa-fw fa-caret-down"}
         %ul{:id => "cars", :class=>"collapse"}
           %li
+            %a{:href=>'/admin/cars'} View Cars
+          %li
             %a{:href=>'/admin/addCar'} Add Car
           %li
-            %a{:href=>"/admin/deleteCar"} Change Car
+            %a{:href=>"/admin/changeCar"} Change Car
           %li
-            %a{:href=>"/admin/updateCar"} Update Car
+            %a{:href=>"/admin/changeStock"} Change Stock
           %li
             %a{:href=>"/admin/deleteCar"} Delete Car
       %li

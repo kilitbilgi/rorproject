@@ -11,37 +11,36 @@
     .col-lg-9
       %h3 Add Car
       %form{:action => "/admin/addCarComplete", :method => "post", :role => "form"}
-      %input{name: "authenticity_token", type: "hidden", value: session[:_csrf_token]}
-        .form-group
-          %label Image URL
-          %input.form-control{:name => "car[image]", :placeholder => "Enter URL"}/
-        .form-group
-          %label Daily Price
-          %input.form-control{:name => "car[price]", :placeholder => "Enter Daily Price"}/
-        .form-group
-          %label Car Stock
-          %input.form-control{:name => "car[stock]", :placeholder => "Enter Stock Information"}/
-        .form-group
-          %label Title
-          %input.form-control{:name => "car[title]", :placeholder => "Enter Title"}/
-        .form-group
-          %label Make
-          %input.form-control{:name => "car[make]", :placeholder => "Enter Make"}/
-        .form-group
-          %label Model
-          %input.form-control{:name => "car[model]", :placeholder => "Enter Model"}/
-        .form-group
-          %label Year
-          %input.form-control{:name => "car[year]", :placeholder => "Enter Year"}/
-        .form-group
-          %label Color
-          %input.form-control{:name => "car[color]", :placeholder => "Enter Color"}/
-        .form-group
-          %label Fuel
-          %input.form-control{:name => "car[fuel]", :placeholder => "Fuel Type"}/
-        .form-group
-          %label HP
-          %input.form-control{:name => "car[hp]", :placeholder => "Enter HP"}/
-        %button.btn.btn-default{:name => "submit", :type => "submit"} Submit
-      .results
+        %input{name: "authenticity_token", type: "hidden", value: session[:_csrf_token]}
+          .form-group
+            %label Image URL
+            %input.form-control{:name => "car[image]", :placeholder => "Enter URL"}
+          .form-group
+            %label Daily Price
+            %input.form-control{:name => "car[price]", :placeholder => "Enter Daily Price"}
+          .form-group
+            %label Car Stock
+            %input.form-control{:name => "car[stock]", :placeholder => "Enter Stock Information"}
+          .form-group
+            %label Title
+            %input.form-control{:name => "car[title]", :placeholder => "Enter Title"}
+          .form-group
+            %label Make
+            %input.form-control{:name => "car[make]", :placeholder => "Enter Make"}
+          .form-group
+            %label Model
+            %input.form-control{:name => "car[model]", :placeholder => "Enter Model"}
+          .form-group
+            %label Year
+            %input.form-control{:name => "car[year_info]", :placeholder => "Enter Year"}
+          .form-group
+            %label Color
+            %input.form-control{:name => "car[color]", :placeholder => "Enter Color"}
+          .form-group
+            %label Fuel
+            %input.form-control{:name => "car[fueltype]", :placeholder => "Fuel Type"}
+          .form-group
+            %label HP
+            %input.form-control{:name => "car[hp]", :placeholder => "Enter HP"}
+          %button.btn.btn-default{:name => "submit", :type => "submit"} Submit
   %p.clear

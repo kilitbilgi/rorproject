@@ -30,6 +30,7 @@ class MembersController < ApplicationController
       if @member.save
         #format.html { redirect_to @member, notice: 'Member was successfully created.' }
         redirect_to root_path
+        flash[:member_complete] = "Member added successfully"
         #format.json { render :show, status: :created, location: @member }
       else
         redirect_to root_path

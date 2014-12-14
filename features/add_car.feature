@@ -5,7 +5,7 @@ Feature: Add a Car
 
   Scenario: Add a Car
     Given I am on the add car panel
-    And I fill "ferrari.png" as car_image
+    And I fill "ferrari.png" as car[image]
     And I fill "500" as car_price
     And I fill "10" as car_stock
     And I fill "Ferrari F40 Rent" as car_title

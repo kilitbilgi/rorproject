@@ -2,6 +2,7 @@ class AdminController < ApplicationController
   # GET /admins
   # GET /admins.json
   def index
+    #If admin logged in , redirect to admin panel
     if session[:admin_id]
       redirect_to admin_main_path
     end
@@ -13,15 +14,76 @@ class AdminController < ApplicationController
   end
 
   def cars
+    @all_cars = Car.all.order 'id'
     render :layout => 'admin_layout'
-    @all_cars = Car.all
+  end
+
+  # GET /admin/AddCar
+  def add_car
+    render :layout => 'admin_layout'
+    @car = Car.new
+  end
+
+  # GET /admin/addCarComplete
+  def add_car_complete
+    #render :layout => 'admin_layout'
+    @car = Car.new(car_params)
+    if @car.save
+      redirect_to '/admin/cars'
+    else
+      redirect_to '/admin/cars'
+    end
+  end
+
+  def change_car
+    render :layout => 'admin_layout'
+  end
+
+  def change_car_complete
+    @car = Car.find_by_id(params[:car_id])
+    if @car.update(car_params)
+      redirect_to admin_cars_path
+    else
+      redirect_to admin_cars_path
+    end
+  end
+
+  def change_stock
+    render :layout => 'admin_layout'
+  end
+
+  def change_stock_complete
+    @car = Car.find_by_id(params[:car_id])
+    if @car.update(stock_params)
+      redirect_to admin_cars_path
+    else
+      redirect_to admin_cars_path
+    end
+  end
+
+  def delete_car
+    render :layout => 'admin_layout'
+  end
+
+  def delete_car_complete
+    @car = Car.find_by_id(params[:car_id])
+    if @car.delete
+      redirect_to admin_cars_path
+    else
+      redirect_to admin_cars_path
+    end
+  end
+
+  def members
+    @all_members = Member.all.order 'id'
+    render :layout => 'admin_layout'
   end
 
   def main
-    render :layout => 'admin_layout'
     if session[:admin_id]
       admin = Admin.find_by_id(session[:admin_id])
-      session[:full_name] = admin.fname + " " +admin.lname
+      @full_name = admin.fname + " " +admin.lname
+      render :layout => 'admin_layout'
     else
       redirect_to admin_path
     end
@@ -44,60 +106,6 @@ class AdminController < ApplicationController
     @admin = Admin.new
   end
 
-  # GET /admin/AddCar
-  def add_car
-    render :layout => 'admin_layout'
-    @car = Car.new
-  end
-
-  def add_car_complete
-    render :layout => 'admin_layout'
-    @car = Car.new(car_params)
-  end
-
-
-  def edit_car
-    @car = Car.new
-  end
-
-  def addCarComplete
-    @car = Car.new
-  end
-
-  # GET /admins/1/edit
-  def edit
-  end
-
-  # POST /admins
-  # POST /admins.json
-  def create
-    @admin = Admin.new(admin_params)
-
-    respond_to do |format|
-      if @admin.save
-        format.html { redirect_to @admin, notice: 'Admin was successfully created.' }
-        format.json { render :show, status: :created, location: @admin }
-      else
-        format.html { render :new }
-        format.json { render json: @admin.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /admins/1
-  # PATCH/PUT /admins/1.json
-  def update
-    respond_to do |format|
-      if @admin.update(admin_params)
-        format.html { redirect_to @admin, notice: 'Admin was successfully updated.' }
-        format.json { render :show, status: :ok, location: @admin }
-      else
-        format.html { render :edit }
-        format.json { render json: @admin.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
   # DELETE /admins/1
   # DELETE /admins/1.json
   def destroy
@@ -106,7 +114,14 @@ class AdminController < ApplicationController
   end
 
   private
-    def member_params
-      params.require(:car).permit(:image, :price, :stock, :title , :birthdate, :cellphone)
+    def car_params
+      params.require(:car).permit(:title, :make, :model , :year_info, :color , :fueltype, :hp , :image , :price, :stock)
+    end
+    def car_change_params
+      params.require(:car).permit(:title, :make, :model , :year_info, :color , :fueltype, :hp , :image , :price, :stock)
+    end
+    def stock_params
+      params.require(:car).permit(:stock)
     end
 end
+

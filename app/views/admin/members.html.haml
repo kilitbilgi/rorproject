@@ -6,7 +6,7 @@
         Cars
       .alert.alert-info.alert-dismissable
         %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
-        Welcome to Cars Page
+        Welcome to Members Page
   .row
     .col-lg-12
       %h3 All Cars
@@ -24,7 +24,7 @@
             %th Price
             %th Stock
         %tbody
-          -@all_cars.each do |car_obj|
+          -@all_members.each do |car_obj|
             %tr.popimg{"data-img" => "http://www.burakcolak.com.tr/rentacar/images/maxima.png", "data-original-title" => "", :rel => "popover", :title => ""}
               %td
                 =car_obj.id

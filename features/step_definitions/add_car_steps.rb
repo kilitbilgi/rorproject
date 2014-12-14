@@ -2,7 +2,7 @@ Given(/^I am on the add car panel$/) do
   visit('/admin/addCar')
 end
 
-And(/^I fill "(.*?)" as car_image$/) do |url|
+And(/^I fill "(.*?)" as car[image]$/) do |url|
   fill_in "car_image", :with => url
 end
 
