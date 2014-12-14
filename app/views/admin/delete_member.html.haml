@@ -1,0 +1,19 @@
+=render "common"
+#page-wrapper
+  .row
+    .col-lg-12
+      %h1
+        Members
+        %small
+      .alert.alert-info.alert-dismissable
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+        Welcome to Members Page
+  .row
+    .col-lg-10
+      %h3 Delete Member
+      %form{:action => "/admin/deleteMemberComplete", :method => "post", :role => "form"}
+        %input{name: "authenticity_token", type: "hidden", value: session[:_csrf_token]}
+        .form-group
+          %label ID
+          %input.form-control{:name => "user_id", :placeholder => "Enter ID"}
+        %button.btn.btn-default{:name => "submit", :type => "submit"} Delete

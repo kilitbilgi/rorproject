@@ -8,11 +8,6 @@ class AdminController < ApplicationController
     end
   end
 
-  # GET /admins/1
-  # GET /admins/1.json
-  def show
-  end
-
   def cars
     @all_cars = Car.all.order 'id'
     render :layout => 'admin_layout'
@@ -79,6 +74,32 @@ class AdminController < ApplicationController
     render :layout => 'admin_layout'
   end
 
+  def change_member
+    render :layout => 'admin_layout'
+  end
+
+  def change_member_complete
+    member = Member.find_by_id(params[:user_id])
+    if member.update(member_params)
+      redirect_to admin_members_path
+    else
+      redirect_to admin_members_path
+    end
+  end
+
+  def delete_member
+    render :layout => 'admin_layout'
+  end
+
+  def delete_member_complete
+    member = Member.find_by_id(params[:user_id])
+    if member.delete
+      redirect_to admin_members_path
+    else
+      redirect_to admin_members_path
+    end
+  end
+
   def main
     if session[:admin_id]
       admin = Admin.find_by_id(session[:admin_id])
@@ -122,6 +143,9 @@ class AdminController < ApplicationController
     end
     def stock_params
       params.require(:car).permit(:stock)
+    end
+    def member_params
+      params.require(:member).permit(:fname,:lname,:birthdate,:cellphone)
     end
 end
 

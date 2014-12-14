@@ -1,0 +1,31 @@
+=render "common"
+#page-wrapper
+  .row
+    .col-lg-12
+      %h1
+        Cars
+        %small
+      .alert.alert-info.alert-dismissable
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+        Welcome to Cars Page
+  .row
+    .col-lg-10
+      %h3 Change Member
+      %form{:action => "/admin/changeMemberComplete", :method => "post", :role => "form"}
+        %input{name: "authenticity_token", type: "hidden", value: session[:_csrf_token]}
+        .form-group
+          %label ID
+          %input.form-control{:name => "user_id", :placeholder => "Enter ID"}
+        .form-group
+          %label Name
+          %input.form-control{:name => "member[fname]", :placeholder => "Enter Name"}
+        .form-group
+          %label Surname
+          %input.form-control{:name => "member[lname]", :placeholder => "Enter Surname"}
+        .form-group
+          %label Birth Date
+          %input.form-control{:name => "member[birthdate]", :placeholder => "Enter Birthdate"}
+        .form-group
+          %label Cell Phone
+          %input.form-control{:name => "member[cellphone]", :placeholder => "Enter Cell Phone"}
+        %button.btn.btn-default{:name => "submit", :type => "submit"} Update

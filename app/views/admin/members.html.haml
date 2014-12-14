@@ -9,40 +9,28 @@
         Welcome to Members Page
   .row
     .col-lg-12
-      %h3 All Cars
+      %h3 All Members
       %table.table.table-bordered.table-hover.tablesorter
         %thead
           %tr
             %th ID
-            %th Title
-            %th Make
-            %th Model
-            %th Year
-            %th Color
-            %th Fuel
-            %th Hp
-            %th Price
-            %th Stock
+            %th Name
+            %th Surname
+            %th E-mail
+            %th Cell Phone
+            %th Birth Date
         %tbody
-          -@all_members.each do |car_obj|
+          -@all_members.each do |member_obj|
             %tr.popimg{"data-img" => "http://www.burakcolak.com.tr/rentacar/images/maxima.png", "data-original-title" => "", :rel => "popover", :title => ""}
               %td
-                =car_obj.id
+                =member_obj.id
               %td
-                =car_obj.title
+                =member_obj.fname
               %td
-                =car_obj.make
+                =member_obj.lname
               %td
-                =car_obj.model
+                =member_obj.email
               %td
-                =car_obj.year_info
+                =member_obj.cellphone
               %td
-                =car_obj.color
-              %td
-                =car_obj.fueltype
-              %td
-                =car_obj.hp
-              %td
-                =car_obj.price
-              %td
-                =car_obj.stock
+                =member_obj.birthdate
