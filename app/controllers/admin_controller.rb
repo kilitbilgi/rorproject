@@ -1,6 +1,7 @@
 class AdminController < ApplicationController
-  # GET /admins
-  # GET /admins.json
+
+  #Admin Controller
+
   def index
     #If admin logged in , redirect to admin panel
     if session[:admin_id]
@@ -97,6 +98,29 @@ class AdminController < ApplicationController
       redirect_to admin_members_path
     else
       redirect_to admin_members_path
+    end
+  end
+
+  def rentals
+    @all_rentals = Rental.all.order 'id'
+    render :layout => 'admin_layout'
+  end
+
+  def options
+    @title = Option.find_by_opt_key 'site_title'
+    render :layout => 'admin_layout'
+  end
+
+  def options_complete
+    site_title = params[:site_title]
+    if site_title.presence
+      title_obj = Option.find_by_opt_key 'site_title'
+      title_obj.opt_val = site_title
+      if title_obj.save
+        redirect_to admin_options_path
+      else
+        redirect_to admin_options_path
+      end
     end
   end
 

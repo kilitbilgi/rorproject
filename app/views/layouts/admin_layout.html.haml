@@ -1,7 +1,9 @@
 !!!
 %html
   %head
-    %title Rorproject
+    %title
+      - opt_obj = Option.find_by_opt_key "site_title"
+      = opt_obj.opt_val
     = stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
   %body

@@ -1,0 +1,30 @@
+=render "common"
+#page-wrapper
+  .row
+    .col-lg-12
+      %h1
+        Rentals
+      .alert.alert-info.alert-dismissable
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+        Welcome to Rentals Page
+  .row
+    .col-lg-12
+      %h3 All Rentals
+      %table.table.table-bordered.table-hover.tablesorter
+        %thead
+          %tr
+            %th ID
+            %th Location
+            %th Pickup Date
+            %th Dropoff Date
+        %tbody
+          -@all_rentals.each do |rental_obj|
+            %tr.popimg{"data-img" => "http://www.burakcolak.com.tr/rentacar/images/maxima.png", "data-original-title" => "", :rel => "popover", :title => ""}
+              %td
+                =rental_obj.id
+              %td
+                =rental_obj.location
+              %td
+                =member_obj.pickupdate
+              %td
+                =member_obj.dropoffdate

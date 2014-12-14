@@ -1,5 +1,7 @@
 %head
-  %title Rorproject
+  %title
+    - opt_obj = Option.find_by_opt_key "site_title"
+    = opt_obj.opt_val
   %meta{:charset => "utf-8"}
   %meta{:name => "viewport" , :content => "width=device-width, initial-scale=1"}
   = stylesheet_link_tag    'general', media: 'all', 'data-turbolinks-track' => true

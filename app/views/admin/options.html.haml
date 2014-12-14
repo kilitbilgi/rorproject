@@ -1,0 +1,19 @@
+=render "common"
+#page-wrapper
+  .row
+    .col-lg-12
+      %h1
+        Options
+        %small
+      .alert.alert-info.alert-dismissable
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} &times;
+        Welcome to Options Page
+  .row
+    .col-lg-10
+      %h3 Change Frontend
+      %form{:action => "/admin/optionsComplete", :method => "post", :role => "form"}
+        %input{name: "authenticity_token", type: "hidden", value: session[:_csrf_token]}
+        .form-group
+          %label Title
+          %input.form-control{:name => "site_title", :placeholder => @title.opt_val}
+        %button.btn.btn-default{:name => "submit", :type => "submit"} Update
