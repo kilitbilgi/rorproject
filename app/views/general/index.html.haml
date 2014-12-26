@@ -17,10 +17,10 @@
     #branding
       #branding-content
         .title-content
-          %a{:href => "index.php", :title => ""}
+          %a{:href => "/", :title => ""}
             %img.site-logo{:alt => "", :src => "/assets/logo.png"}
           %h1.site-title
-            %a{:href => "index.php", :title => ""} Renta
+            %a{:href => "/", :title => ""} Renta
         .access-content
           %ul
         .menus-content
@@ -66,7 +66,7 @@
               %h4 Drop-off date
               %input.datepicker{:name => "date_to", :placeholder => "Click and Select Date", :type => "text"}
             .form-block.form-submit
-              %input.orange_button.form-continue{:name => "choose_car", :type => "submit", :value => "Choose Car"}
+              %input.orange_button.form-continue{:type => "submit"}
           .clear
     #main
       .sidebars-area

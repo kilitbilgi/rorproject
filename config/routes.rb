@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get '/admin/deleteCar' => 'admin#delete_car'
   get '/admin/deleteMember'=>'admin#delete_member'
   get '/admin/logout' => 'admin#destroy'
-  get '/choose_car' , to:'general#choose_car'
+  get '/choose_car' , to:'cars#choose_car'
   get '/logout' => 'session#destroy'
 
   #Post Routes
@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   post '/admin/deleteCarComplete' => 'admin#delete_car_complete'
   post '/admin/deleteMemberComplete' => 'admin#delete_member_complete'
   post '/admin/optionsComplete' => 'admin#options_complete'
+  #post '/chooseCar' => 'cars#choose_car'
   post '/admin/login' => 'admin#login'
 
 end

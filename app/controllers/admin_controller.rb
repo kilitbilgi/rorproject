@@ -35,13 +35,17 @@ class AdminController < ApplicationController
     render :layout => 'admin_layout'
   end
 
-  def change_car_complete
+  def change_complete(param)
     @car = Car.find_by_id(params[:car_id])
-    if @car.update(car_params)
+    if @car.update(param)
       redirect_to admin_cars_path
     else
       redirect_to admin_cars_path
     end
+  end
+
+  def change_car_complete
+    change_complete car_params
   end
 
   def change_stock
@@ -49,12 +53,7 @@ class AdminController < ApplicationController
   end
 
   def change_stock_complete
-    @car = Car.find_by_id(params[:car_id])
-    if @car.update(stock_params)
-      redirect_to admin_cars_path
-    else
-      redirect_to admin_cars_path
-    end
+    change_complete stock_params
   end
 
   def delete_car
@@ -138,6 +137,7 @@ class AdminController < ApplicationController
     admin = Admin.authenticate(params[:admin_email], params[:admin_password])
     if admin
       session[:admin_id] = admin.id
+      session[:full_name] = admin.fname + " " + admin.lname
       flash[:admin_success] = "Logged in!"
       redirect_to admin_main_path
     else
@@ -160,9 +160,6 @@ class AdminController < ApplicationController
 
   private
     def car_params
-      params.require(:car).permit(:title, :make, :model , :year_info, :color , :fueltype, :hp , :image , :price, :stock)
-    end
-    def car_change_params
       params.require(:car).permit(:title, :make, :model , :year_info, :color , :fueltype, :hp , :image , :price, :stock)
     end
     def stock_params
