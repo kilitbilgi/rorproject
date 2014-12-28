@@ -1,0 +1,204 @@
+%head
+  %title
+    = get_title
+  %meta{:charset => "utf-8"}
+  %meta{:name => "viewport" , :content => "width=device-width, initial-scale=1"}
+  = stylesheet_link_tag    'general', media: 'all', 'data-turbolinks-track' => true
+  = csrf_meta_tags
+%body.page.page-two-column.no-main-form
+  #conteiner
+    #branding
+      #branding-content
+        .title-content
+          %a{:href => "/", :title => ""}
+            %img.site-logo{:alt => "", :src => "/assets/logo.png"}
+          %h1.site-title
+            %a{:href => "/", :title => ""} Renta
+        .access-content
+          %ul
+        .menus-content
+          .member
+            -if session[:user_id]
+              %p{:style => "float:right;margin:10px 5px 0 0;"}
+                %i.fa.fa-user{:style => "padding-right:3px;"}
+                =@welcome_name
+                %br
+                %i.fa.fa-sign-out{:style => "padding-right:3px;"}
+                %a{:href => "logout"} Logout
+            -else
+              %span.sign_in
+                %a.sign_button.tab_link_button{:href => "#sign_in", :title => ""} Sign in
+              %span.register
+                %a.sign_button.tab_link_button{:href => "#register", :title => ""} Register
+      .clear
+  #main
+    #primary
+      .clear
+      %aside#secondary.sidebar-left
+        .widget
+          %h3.widget-title
+            %img{:alt => "", :src => "/assets/star1.png"}
+              Order Info
+          %h4
+            Car
+            %a{:href => "/choose_car", :title => ""} Edit
+          .widget-content.main-block.product-widget-mini
+            .product-img
+              %img{:alt => "", :height => "55", :src => @car.image, :width => "105"}
+            .product-info
+              .entry-format
+                %div
+                =@car.title
+              .features
+                %p
+                  %strong> Make:
+                  =@car.make
+                %p
+                  %strong> Model:
+                  =@car.model
+                %p
+                  %strong> Year:
+                  =@car.year_info
+              .details
+                .view-details{:style => "color: rgb(55, 142, 239); display: block;"} [+] View car details
+                .close-details{:style => "display: none; color: rgb(55, 142, 239);"} [-] Close car details
+                %ul.details-more{:style => "display: none;"}
+                  %li
+                    %strong> Color:
+                    =@car.color
+                  %li
+                    %strong> Fuel:
+                    =@car.fueltype
+                  %li
+                    %strong> HP:
+                    =@car.hp
+          %h4
+            Date &amp; Location
+            %a{:href => "/", :title => ""} Edit
+          .widget-content.widget-info
+            %h4 Pick Up Date
+            %p
+              =session[:date_from]
+            %h4 Return Date
+            %p
+              =session[:date_to]
+            %h4 Pickup and Return Location
+            %p
+              =session[:location]
+          .widget-footer.widget-footer-total
+            Total:
+            %span.price
+              =@total_price
+              TL
+      #content.sidebar-middle
+        %form.complete_reservation{:action => "/complete_reservation", :method => "post"}
+          .widget.main-widget.main-widget-3column
+            .widget-title
+              %div
+                %img{:alt => "", :src => '/assets/complete_reservation.png'}
+                  Complete reservation form
+              .clear
+            %h4 Note
+            .widget-content.widget-note
+              %h4 Upon completing this reservation, you will receive:
+              %ul
+                %li Your rental voucher to produce on arrival at the rental desk
+                %li A toll-free customer support number
+            %h4 Personal information
+            .widget-content
+              .form_element
+                %div First name
+                %input{:name => "first_name", :type => "text", :value => @user_info.fname}
+              .form_element
+                %div Last name
+                %input{:name => "last_name", :type => "text", :value => @user_info.lname}
+              .form_element
+                %div Age
+                %div.product-select-count
+                  %select.select{:name=>"age"}
+                    %option{:value=>@age,:selected=>"selected"}
+                      =@age
+              .clear
+              .form_element
+                %div Email address
+                %input{:readonly => "true", :value => @user_info.email}
+              .form_element
+                %div Phone number
+                %input{:name => "phone_number", :type => "text", :value => @user_info.cellphone}
+              .clear
+            %h4 Credit card information
+            .widget-content.personal_info
+              .form_element
+                %div Card Type
+                %img{:alt => "", :src => "/assets/visa.png"}
+                  %img{:alt => "", :src => "/assets/master_card.png"}
+                    %img{:alt => "", :src => "/assets/american_express.png"}
+              .clear
+              .form_element
+                %div Card number
+                %input.card-number{:autocomplete => "off", :name => "card_number", :placeholder => "XXXX-XXXX-XXXX-XXXX", :size => "20", :type => "text", :value => ""}
+              .form_element
+                %div Expiration date
+                .product-select-count
+                  %select.select{:name=>"exp_month", :size=>"2", :class=>"select"}
+                    %option
+                      1
+                    %option
+                      2
+                    %option
+                      3
+                    %option
+                      4
+                    %option
+                      5
+                    %option
+                      6
+                    %option
+                      7
+                    %option
+                      8
+                    %option
+                      9
+                    %option
+                      10
+                    %option
+                      11
+                    %option{:selected => "selected"}
+                      12
+                .product-select-count.expiration_date_year
+                  %select.select{:name => "exp_year", :size => "4" , :class => "select"}
+                    %option
+                      2013
+                    %option
+                      2014
+                    %option{:selected => "selected"}
+                      2015
+                    %option
+                      2016
+                    %option
+                      2017
+                    %option
+                      2018
+                    %option
+                      2019
+                    %option
+                      2020
+                    %option
+                      2021
+              .form_element
+                %div CVV
+                %input.cvv.card-cvc{:placeholder => "XXX", :type => "text", :value => ""}
+              .clear
+              .form_element
+                %div Name on card
+                %input{:name => "card_first_name", :placeholder => "First name", :type => "text", :value => ""}
+              .form_element
+                %input.no-lable{:name => "card_last_name", :placeholder => "Last name", :type => "text", :value => ""}
+              .clear
+          .next_page
+            %input.continue_button.blue_button{:name => "make_order", :type => "submit", :value => "Book Now"}
+              %input{:name => "car_id", :type => "hidden", :value => AESCrypt.encrypt(@car.id,"r3a3")}
+              %input{:name => "price", :type => "hidden", :value => AESCrypt.encrypt(@total_price,"r3a3")}
+              %input{name: "authenticity_token", type: "hidden", value: session[:_csrf_token]}
+      .clear
+  =javascript_include_tag 'application', 'data-turbolinks-track' => true

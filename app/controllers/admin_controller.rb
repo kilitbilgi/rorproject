@@ -24,6 +24,7 @@ class AdminController < ApplicationController
   def add_car_complete
     #render :layout => 'admin_layout'
     @car = Car.new(car_params)
+
     if @car.save
       redirect_to '/admin/cars'
     else
@@ -160,7 +161,7 @@ class AdminController < ApplicationController
 
   private
     def car_params
-      params.require(:car).permit(:title, :make, :model , :year_info, :color , :fueltype, :hp , :image , :price, :stock)
+      params.require(:car).permit(:title, :make, :model , :year_info, :color , :image , :fueltype, :hp , :price, :stock)
     end
     def stock_params
       params.require(:car).permit(:stock)

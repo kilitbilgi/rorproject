@@ -10,11 +10,11 @@
   .row
     .col-lg-9
       %h3 Add Car
-      %form{:action => "/admin/addCarComplete", :method => "post", :role => "form"}
+      %form{:action => "/admin/addCarComplete", :method => "post", :role => "form" ,"enctype"=>"multipart/form-data" }
         %input{name: "authenticity_token", type: "hidden", value: session[:_csrf_token]}
           .form-group
             %label Image URL
-            %input.form-control{:name => "car[image]", :placeholder => "Enter URL"}
+            %input{:name => "car[image]", :type => "file"}
           .form-group
             %label Daily Price
             %input.form-control{:name => "car[price]", :placeholder => "Enter Daily Price"}

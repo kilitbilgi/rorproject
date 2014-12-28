@@ -25,7 +25,7 @@
             %th Stock
         %tbody
           -@all_cars.each do |car_obj|
-            %tr.popimg{"data-img" => "http://www.burakcolak.com.tr/rentacar/images/maxima.png", "data-original-title" => "", :rel => "popover", :title => ""}
+            %tr{"data-toggle"=>"popover",:title=>"Car Image","data-trigger"=>"hover","data-placement"=>"top","data-html"=>true,"data-content"=>"<img width=150 height=90 src='"+car_obj.image.url(:medium)+"'/>"}
               %td
                 =car_obj.id
               %td

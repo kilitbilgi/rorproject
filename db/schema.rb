@@ -11,12 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141214215753) do
+ActiveRecord::Schema.define(version: 20141228084004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "admins", force: true do |t|
+    t.text     "fname"
+    t.text     "lname"
     t.string   "email",         null: false
     t.string   "password_hash", null: false
     t.string   "password_salt", null: false
@@ -24,8 +26,6 @@ ActiveRecord::Schema.define(version: 20141214215753) do
     t.string   "cellphone"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "fname"
-    t.text     "lname"
   end
 
   create_table "cars", force: true do |t|
@@ -36,14 +36,19 @@ ActiveRecord::Schema.define(version: 20141214215753) do
     t.string   "color"
     t.string   "fueltype"
     t.integer  "hp"
-    t.string   "image"
     t.integer  "price"
     t.integer  "stock"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "members", force: true do |t|
+    t.text     "fname"
+    t.text     "lname"
     t.string   "email",         null: false
     t.string   "password_hash", null: false
     t.string   "password_salt", null: false
@@ -51,8 +56,6 @@ ActiveRecord::Schema.define(version: 20141214215753) do
     t.string   "cellphone"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "fname"
-    t.text     "lname"
   end
 
   add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree

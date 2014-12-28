@@ -1,0 +1,32 @@
+-@cars.each do |car_obj|
+  %form{:action => "/review_book", :method => "post"}
+    %input{name: "authenticity_token", type: "hidden", value: session[:_csrf_token]}
+    .post
+      .main-block_container
+        .additional-block_container
+          .main-block
+            .product-img
+              %img{:width=>"155" , :height => "75",:src=>car_obj.image}
+            .product-info
+              %h3.entry-format
+                =car_obj.title
+              .features
+                %p
+                  %strong Make:
+                  =car_obj.make
+                %p
+                  %strong Model:
+                  =car_obj.model
+                %p
+                  %strong Year:
+                  =car_obj.year_info
+          .additional-block
+            %p
+              =car_obj.price
+            %p.span
+              TL / Per Day
+            %input{:type => "hidden" , :name => "car_id" , :value => AESCrypt.encrypt(car_obj.id,"r3a3")}
+            %input{:type => "hidden" , :name => "date_from" , :value => session[:date_from]}
+            %input{:type => "hidden" , :name => "date_to" , :value => session[:date_to]}
+            %input{:class=>"continue_button blue_button",:type=>"submit",:value=>"Select"}
+      .clear

@@ -1,7 +1,6 @@
 %head
   %title
-    - opt_obj = Option.find_by_opt_key "site_title"
-    = opt_obj.opt_val
+    = get_title
   %meta{:charset => "utf-8"}
   %meta{:name => "viewport" , :content => "width=device-width, initial-scale=1"}
   = stylesheet_link_tag    'general', media: 'all', 'data-turbolinks-track' => true
@@ -13,6 +12,9 @@
   - if flash["login_error"]
     %script{:type=>"text/javascript"}
       alert("Login error");
+  - if flash["empty_error"]
+    %script{:type=>"text/javascript"}
+      alert("All fields must be filled");
   #conteiner
     #branding
       #branding-content
@@ -52,7 +54,8 @@
             .entry-header
               %h3.entry-format Welcome to Rent A Car
             .entry-content Start now for rent
-        %form#slider-form.main-form{:action => "choose_car", :method => "get"}
+        %form#slider-form.main-form{:action => "choose_car", :method => "post"}
+          %input{name: "authenticity_token", type: "hidden", value: session[:_csrf_token]}
           .main_form_navigation
             #manage_reservation.title-form1.current Create A Request
           #book_car_content.content-form
@@ -85,69 +88,30 @@
                 %img{:alt => "", :src => "assets/latest.png"}
                 Last 3 Added Cars
               .clear
-            .post
-              .entry-header
-                %span Nissan
-              .entry-content
-                %div{:style => "float:left;"}
-                  %img{:height => "76", :src => "assets/maxima.png", :width => "149"}
-                %div{:style => "margin-left:30px;float:left;"}
-                  %ul
-                    %li.lastadded
-                      %strong> Make:
-                      Nissan
-                    %li.lastadded
-                      %strong> Model:
-                      Maxima
-                    %li.lastadded
-                      %strong> Year:
-                      2013
-                    %li.lastadded
-                      %strong> Price:
-                      45$day
-                .clear
-            .post
-              .entry-header
-                %span Renault
-              .entry-content
-                %div{:style => "float:left;"}
-                  %img{:height => "76", :src => "assets/clio.png", :width => "149"}
-                %div{:style => "margin-left:30px;float:left;"}
-                  %ul
-                    %li.lastadded
-                      %strong> Make:
-                      Renault
-                    %li.lastadded
-                      %strong> Model:
-                      Clio
-                    %li.lastadded
-                      %strong> Year:
-                      2012
-                    %li.lastadded
-                      %strong> Price:
-                      160$day
-                .clear
-            .post
-              .entry-header
-                %span Ferrari
-              .entry-content
-                %div{:style => "float:left;"}
-                  %img{:height => "76", :src => "assets/ferrari-enzo.png", :width => "149"}
-                %div{:style => "margin-left:30px;float:left;"}
-                  %ul
-                    %li.lastadded
-                      %strong> Make:
-                      Ferrari
-                    %li.lastadded
-                      %strong> Model:
-                      Enzo
-                    %li.lastadded
-                      %strong> Year:
-                      2013
-                    %li.lastadded
-                      %strong> Price:
-                      120$day
-                .clear
+            -@cars.each do |car_obj|
+              .post
+                .entry-header
+                  %span
+                    =car_obj.title
+                .entry-content
+                  %div{:style => "float:left;"}
+                    %img{:width=>"150" , :height => "75",:src=>car_obj.image}
+                  %div{:style => "margin-left:30px;float:left;"}
+                    %ul
+                      %li.lastadded
+                        %strong> Make:
+                        =car_obj.make
+                      %li.lastadded
+                        %strong> Model:
+                        =car_obj.model
+                      %li.lastadded
+                        %strong> Year:
+                        =car_obj.year_info
+                      %li.lastadded
+                        %strong> Price:
+                        =car_obj.price
+                        TL / Year
+                  .clear
         %aside.sidebar-right
           .widget
             %h3.widget-title
@@ -169,16 +133,16 @@
               %img{:alt => "", :src => "assets/lamp.png"}
               Car Brands
             %ul
-              %li.even
-                %a{:href => "#", :title => ""} Ferrari
-              %li.odd
-                %a{:href => "#", :title => ""} Ford
-              %li.even
-                %a{:href => "#", :title => ""} Nissan
-              %li.odd
-                %a{:href => "#", :title => ""} Renault
-              %li.even
-                %a{:href => "#", :title => ""} Toyota
+              -@brands.each do |brand|
+                -if @index%2==0
+                  %li.even
+                    %a{:href => "#", :title => ""}
+                      =brand
+                -else
+                  %li.odd
+                    %a{:href => "#", :title => ""}
+                      =brand
+                -@index += 1
         .clear
     .clear
     %footer#footer

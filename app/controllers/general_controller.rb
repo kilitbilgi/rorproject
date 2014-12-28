@@ -8,34 +8,27 @@ class GeneralController < ApplicationController
       @current_member = Member.find_by_id(session[:user_id])
       @welcome_name = @current_member.fname + " " +@current_member.lname
     end
-  end
+    clear_rent_info
 
-  # GET /generals/1
-  # GET /generals/1.json
-  def show
-  end
+    #Car brand index
+    @index = 0;
 
-  # GET /generals/new
-  def new
-    @general = General.new
-  end
+    #Latest 3 cars
+    @cars = get_latest_cars
 
-  def choose_car
+    #All brands
+    @brands = get_cars_brands
 
   end
 
-  # GET /generals/1/edit
-  def edit
+  def get_latest_cars
+    latest_cars = Car.last 3
+    return latest_cars
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_general
-      @general = General.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def general_params
-      params[:general]
-    end
+  def get_cars_brands
+    cars_brands = Car.uniq.pluck(:make)
+    puts YAML::dump cars_brands
+    return cars_brands
+  end
 end

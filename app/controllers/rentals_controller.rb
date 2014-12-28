@@ -1,75 +1,29 @@
 class RentalsController < ApplicationController
-  before_action :set_member, only: [:show, :edit, :update, :destroy]
 
-  # GET /members
-  # GET /members.json
-  def index
-    @members = Member.all
+  def review_book
+    require 'date'
+    car_id = AESCrypt.decrypt(params[:car_id], "r3a3")
+    @car = Car.find_by_id car_id
+
+    price = @car.price
+    date_from = session[:date_from].to_date
+    date_to   = session[:date_to].to_date
+
+    date_differ = ( date_to - date_from ).to_i
+
+    @total_price = date_differ * price
+
+    @user_info = get_user_info
+
+    @age = calculate_age(get_user_info.birthdate)
   end
 
-  # GET /members/1
-  # GET /members/1.json
-  def show
+  def get_user_info
+    return Member.find_by_id session[:user_id]
   end
 
-  # GET /members/new
-  def new
-    @member = Member.new
+  def calculate_age(birthday)
+    return (Date.today - birthday).to_i / 365
   end
 
-  # GET /members/1/edit
-  def edit
-  end
-
-  # POST /members
-  # POST /members.json
-  def create
-    @member = Member.new(member_params)
-
-    #respond_to do |format|
-      if @member.save
-        #format.html { redirect_to @member, notice: 'Member was successfully created.' }
-        redirect_to root_path
-        #format.json { render :show, status: :created, location: @member }
-      else
-        redirect_to root_path
-        #format.json { render json: @member.errors, status: :unprocessable_entity }
-      end
-    #end
-  end
-
-  # PATCH/PUT /members/1
-  # PATCH/PUT /members/1.json
-  def update
-    respond_to do |format|
-      if @member.update(member_params)
-        format.html { redirect_to @member, notice: 'Member was successfully updated.' }
-        format.json { render :show, status: :ok, location: @member }
-      else
-        format.html { render :edit }
-        format.json { render json: @member.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /members/1
-  # DELETE /members/1.json
-  def destroy
-    @member.destroy
-    respond_to do |format|
-      format.html { redirect_to members_url, notice: 'Member was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_member
-      @member = Member.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def member_params
-      params.require(:member).permit(:email, :password, :fname, :lname , :birthdate, :cellphone)
-    end
 end

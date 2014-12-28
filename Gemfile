@@ -7,6 +7,7 @@ gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 
+gem 'aescrypt'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem "metric_fu"
 gem 'haml'
@@ -53,4 +54,6 @@ group :test do
   gem 'database_cleaner'
 end
 
-gem 'stripe', '~> 1.16.0'
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'aws-sdk'
