@@ -15,7 +15,6 @@ describe Car do
             :color => "silver",
             :fueltype => "diesel",
             :hp => "75",
-            :image => "clio.png",
             :price => "50",
             :stock => "3",
             :updated_at => DateTime.now ,

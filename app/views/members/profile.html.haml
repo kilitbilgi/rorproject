@@ -1,0 +1,63 @@
+%body.center-slider.one-column.middle-sidebar
+  :css
+    .form-full{
+    float:left;
+    width:100%;
+    margin-bottom:10px;
+    }
+    .form-left{
+    width:9%;
+    float:left;
+    padding-top:10px;
+    }
+    .form-right{
+    float:right;
+    width:90%!important;
+    }
+    input.form-right{
+    padding-left:5px;
+    }
+    .form-continue{
+    padding-left:20px!important;
+    }
+  =render :partial => 'general/header'
+  =render :partial => 'general/slider'
+  #main
+    .sidebars-area
+      %aside.sidebar
+        .widget
+          .widget-title.special-offers
+            %div
+              %img{:alt => "", :src => "/assets/info.png"}
+              Your Profile
+            .clear
+          .widget-content
+            %form{:action => "profile.php", :method => "post"}
+              .form-full
+                %label.form-left{:for => "fname"} First Name:
+                %input#fname.form-right{:maxlength => "30", :name => "fname", :type => "text", :value => "Burak1"}
+              .clear
+              .form-full
+                %label.form-left{:for => "lname"} Last Name:
+                %input#lname.form-right{:maxlength => "30", :name => "lname", :type => "text", :value => "Çolak1"}
+              .clear
+              .form-full
+                %label.form-left{:for => "phone"} Cell Phone:
+                %input#phone.form-right{:maxlength => "11", :name => "phone", :type => "text", :value => "05330000001"}
+              .clear
+              .form-full
+                %label{:for => "name"} Email:
+                %strong.form-right kilitbilgi@gmail.com
+              .clear
+              .form-full
+                %label.form-left{:for => "password"} Password:
+                %input#password.form-right{:maxlength => "40", :name => "password", :type => "password"}
+              .clear
+              .form-full
+                %label.form-left{:for => "bdate"} Birth Date:
+                %input#bdate.datepicker.form-right{:maxlength => "10", :name => "bdate", :type => "text", :value => "01/07/1993"}
+              .clear
+              %input.orange_button.form-continue{:name => "submit", :type => "submit", :value => "Update"}
+      .clear
+    .clear
+  =render :partial => 'general/footer'

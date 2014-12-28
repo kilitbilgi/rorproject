@@ -1,8 +1,8 @@
 class RentalsController < ApplicationController
 
-  def review_book
+  def review_book_skeleton(param)
     require 'date'
-    car_id = AESCrypt.decrypt(params[:car_id], "r3a3")
+    car_id = AESCrypt.decrypt(param, "r3a3")
     @car = Car.find_by_id car_id
 
     price = @car.price
@@ -16,6 +16,19 @@ class RentalsController < ApplicationController
     @user_info = get_user_info
 
     @age = calculate_age(get_user_info.birthdate)
+  end
+
+  def review_book
+    review_book_skeleton(params[:car_id])
+  end
+
+  def review_book_get
+    if session[:car_id]==nil
+      return redirect_to root_path
+    end
+    review_book_skeleton(session[:car_id])
+    flash[:card_error]=true
+    render 'rentals/review_book'
   end
 
   def get_user_info

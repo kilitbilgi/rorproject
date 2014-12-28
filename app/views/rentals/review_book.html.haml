@@ -1,36 +1,20 @@
-%head
-  %title
-    = get_title
-  %meta{:charset => "utf-8"}
-  %meta{:name => "viewport" , :content => "width=device-width, initial-scale=1"}
-  = stylesheet_link_tag    'general', media: 'all', 'data-turbolinks-track' => true
-  = csrf_meta_tags
 %body.page.page-two-column.no-main-form
-  #conteiner
-    #branding
-      #branding-content
-        .title-content
-          %a{:href => "/", :title => ""}
-            %img.site-logo{:alt => "", :src => "/assets/logo.png"}
-          %h1.site-title
-            %a{:href => "/", :title => ""} Renta
-        .access-content
-          %ul
-        .menus-content
-          .member
-            -if session[:user_id]
-              %p{:style => "float:right;margin:10px 5px 0 0;"}
-                %i.fa.fa-user{:style => "padding-right:3px;"}
-                =@welcome_name
-                %br
-                %i.fa.fa-sign-out{:style => "padding-right:3px;"}
-                %a{:href => "logout"} Logout
-            -else
-              %span.sign_in
-                %a.sign_button.tab_link_button{:href => "#sign_in", :title => ""} Sign in
-              %span.register
-                %a.sign_button.tab_link_button{:href => "#register", :title => ""} Register
-      .clear
+  - if flash["card_error"]
+    %script{:type=>"text/javascript"}
+      alert("Card information is invalid");
+  =render :partial => 'general/header'
+  #progress-bar
+    #progress-bar-steps
+      .progress-bar-step.done
+        .step_number 1
+        .step_name Create request
+      .progress-bar-step
+        .step_number 2
+        .step_name Choose a car
+      .progress-bar-step.last.current
+        .step_number 3
+        .step_name Review &amp; Book
+    .clear
   #main
     #primary
       .clear
@@ -201,4 +185,4 @@
               %input{:name => "price", :type => "hidden", :value => AESCrypt.encrypt(@total_price,"r3a3")}
               %input{name: "authenticity_token", type: "hidden", value: session[:_csrf_token]}
       .clear
-  =javascript_include_tag 'application', 'data-turbolinks-track' => true
+  =render :partial => 'general/footer'

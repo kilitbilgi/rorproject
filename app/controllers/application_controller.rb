@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
       session[:location]  = nil
       session[:date_from] = nil
       session[:date_to]   = nil
+      session[:car_id]    = nil
     end
   end
 

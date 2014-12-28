@@ -1,11 +1,10 @@
-Feature: Change Car Availability
+Feature: Change Car Stock
   As an admin
-  I can change car availability
+  I can change car Stock
 
-  Scenario: Changing Car Availability
-    Given I am on the admin panel
-    When I click "Cars" link
-    And I fill "3" as ID
-    And I fill "5" as stock
-    And I click "Submit" button
+  Scenario: Changing Car Stock
+    Given I am on the change stock panel
+    And I fill "3" as car_id
+    And I fill "5" as car[stock]
+    And I click "cars" button
     Then I should see the car I just updated

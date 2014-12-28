@@ -1,0 +1,31 @@
+#slider
+  #slider-img
+    %ul.slides
+      %li
+        %img{:alt => "Slider 1", :src => "/assets/slider1.jpg"}
+      %li
+        %img{:alt => "Slider 3", :src => "/assets/slider3.jpg"}
+    #slider-pattern
+  #slider-content
+    #slider-post
+      .post
+        .entry-header
+          %h3.entry-format Welcome to Rent A Car
+        .entry-content Start now for rent
+    %form#slider-form.main-form{:action => "choose_car", :method => "post"}
+      %input{name: "authenticity_token", type: "hidden", value: session[:_csrf_token]}
+      .main_form_navigation
+        #manage_reservation.title-form1.current Create A Request
+      #book_car_content.content-form
+        .location-block
+          .form-block.location Location
+          %input.location{:name => "location", :placeholder => "Enter Location", :type => "text", :value => ""}
+        .form-block.pick-up
+          %h4 Pick-up date
+          %input.datepicker{:name => "date_from", :placeholder => "Click and Select Date", :type => "text"}
+        .form-block.drop-off
+          %h4 Drop-off date
+          %input.datepicker{:name => "date_to", :placeholder => "Click and Select Date", :type => "text"}
+        .form-block.form-submit
+          %input.orange_button.form-continue{:type => "submit"}
+      .clear

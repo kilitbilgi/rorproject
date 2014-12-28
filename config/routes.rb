@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get '/admin/logout' => 'admin#destroy'
   get '/logout' => 'session#destroy'
   get '/choose_car' , to:'cars#choose_car_get'
+  get '/review_book' , to:'rentals#review_book_get'
+  get '/profile' => 'members#profile'
 
   #Post Routes
   post '/register' => 'members#create'

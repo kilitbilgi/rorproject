@@ -11,7 +11,6 @@ gem 'aescrypt'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem "metric_fu"
 gem 'haml'
-gem 'will_paginate', '~> 3.0.6'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~>  4.0.3'

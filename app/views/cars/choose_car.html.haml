@@ -1,75 +1,61 @@
-%head
-  %title Rorproject
-  %meta{:charset => "utf-8"}
-  %meta{:name => "viewport" , :content => "width=device-width, initial-scale=1"}
-  = stylesheet_link_tag    'general', media: 'all', 'data-turbolinks-track' => true
-  = csrf_meta_tags
 %body.page.page-two-column
-  #conteiner
-    #branding
-      #branding-content
-        .title-content
-          %a{:href => "index.php", :title => ""}
-            %img.site-logo{:alt => "", :src => "/assets/logo.png"}
-          %h1.site-title
-            %a{:href => "index.php", :title => ""} Racar
-        .access-content
-          %ul
-        .menus-content
-          .member
-      .clear
-    #progress-bar
-      #progress-bar-steps
-        .progress-bar-step.done
-          .step_number 1
-          .step_name Create request
-        .progress-bar-step.current
-          .step_number 2
-          .step_name Choose a car
-        .progress-bar-step.last
-          .step_number 3
-          .step_name Review &amp; Book
-      .clear
-    #main
-      %div#slider-form.main-form
-      #primary
-        %aside#secondary.sidebar-left
-          .widget.info_widget
-            %h3.widget-title
-              %img{:alt => "", :src => "/assets/info.png"}
-              Info
-            .widget-content
-              %strong Please Note:
-              The vehicles shown are examples. Specific models within a car class may vary in availability and features, such as passenger seating, luggage capacity and mileage.
-          .widget.info_widget
-            %h3.widget-title
-              %img{:alt => "", :src => "/assets/filter.png"}
-              Your Selection
-            .widget-content
-              %ul#selection-info
-                %li
-                  %i.fa.fa-location-arrow
-                  City :
-                  =session[:location]
-                %li
-                  %i.fa.fa-calendar
-                  Pick Up Date:
-                  =session[:date_from]
-                %li
-                  %i.fa.fa-calendar-o
-                  Drop Off Date:
-                  =session[:date_to]
-        #content.sidebar-middle
-          .widget.main-widget.product-widget
-            .content-overlay
-              %img.ajax-loader{:alt => "", :src => "/assets/ajax-loader.gif"}
-            .widget-title
-              %div
-                %img{:alt => "Car", :src => "/assets/results.png"}
-                Cars
-              .clear
-            .results
-          .pagination
-        .clear
+  =render :partial => 'general/header'
+  #progress-bar
+    #progress-bar-steps
+      .progress-bar-step.done
+        .step_number 1
+        .step_name Create request
+      .progress-bar-step.current
+        .step_number 2
+        .step_name Choose a car
+      .progress-bar-step.last
+        .step_number 3
+        .step_name Review &amp; Book
     .clear
-    =javascript_include_tag 'application', 'data-turbolinks-track' => true
+  #main
+    %div#slider-form.main-form
+    #primary
+      %aside#secondary.sidebar-left
+        .widget.info_widget
+          %h3.widget-title
+            %img{:alt => "", :src => "/assets/info.png"}
+            Info
+          .widget-content
+            %strong Please Note:
+            The vehicles shown are examples. Specific models within a car class may vary in availability and features, such as passenger seating, luggage capacity and mileage.
+        .widget.info_widget
+          %h3.widget-title
+            %img{:alt => "", :src => "/assets/filter.png"}
+            Your Selection
+          .widget-content
+            %ul#selection-info
+              %li
+                %i.fa.fa-location-arrow
+                City :
+                =session[:location]
+              %li
+                %i.fa.fa-calendar
+                Pick Up Date:
+                =session[:date_from]
+              %li
+                %i.fa.fa-calendar-o
+                Drop Off Date:
+                =session[:date_to]
+      #content.sidebar-middle
+        .widget.main-widget.product-widget
+          .content-overlay
+            %img.ajax-loader{:alt => "", :src => "/assets/ajax-loader.gif"}
+          .widget-title
+            %div
+              %img{:alt => "Car", :src => "/assets/results.png"}
+              Cars
+            .clear
+          .results
+        .pagination
+          -for i in 1..@cars_page.to_i
+            %div{"id"=>i.to_s+"-page","class"=>"paginate_click"}
+              =i
+          %p.clear
+      .clear
+  .clear
+  =render :partial => 'general/footer'

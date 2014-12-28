@@ -1,0 +1,28 @@
+#conteiner
+  #branding
+    #branding-content
+      .title-content
+        %a{:href => "/", :title => ""}
+          %img.site-logo{:alt => "", :src => "/assets/logo.png"}
+        %h1.site-title
+          %a{:href => "/", :title => ""} Renta
+      .access-content
+        %ul
+          %li
+            -if session[:user_id]
+              %a{:href => "/profile",:title=>"Profile"} Profile
+      .menus-content
+        .member
+          -if session[:user_id]
+            %p{:style => "float:right;margin:10px 5px 0 0;"}
+              %i.fa.fa-user{:style => "padding-right:3px;"}
+              =session[:full_name]
+              %br
+              %i.fa.fa-sign-out{:style => "padding-right:3px;"}
+              %a{:href => "logout"} Logout
+          -else
+            %span.sign_in
+              %a.sign_button.tab_link_button{:href => "#sign_in", :title => ""} Sign in
+            %span.register
+              %a.sign_button.tab_link_button{:href => "#register", :title => ""} Register
+    .clear
