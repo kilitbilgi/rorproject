@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b691a38d-fec0-4964-af2c-ee90d3e7581f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/general/index.html.haml" afterPath="$PROJECT_DIR$/app/views/general/index.html.haml" />
-    </list>
+    <list default="true" id="b691a38d-fec0-4964-af2c-ee90d3e7581f" name="Default" comment="" />
     <ignored path="rorproject.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -89,7 +87,7 @@
       </map>
     </option>
     <push-targets>
-      <push-target-info repo="$PROJECT_DIR$" source="herokuFinal" target-remote="origin" target-branch="master" />
+      <push-target-info repo="$PROJECT_DIR$" source="herokuFinal" target-remote="origin" target-branch="herokuFinal" />
     </push-targets>
   </component>
   <component name="IdeDocumentHistory">
