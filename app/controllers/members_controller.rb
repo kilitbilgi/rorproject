@@ -5,7 +5,7 @@ class MembersController < ApplicationController
 
     if @member.save
       redirect_to root_path
-      flash[:member_complete] = "You signed up successfully"
+      flash[:member_complete] = true
     else
       redirect_to root_path
     end
