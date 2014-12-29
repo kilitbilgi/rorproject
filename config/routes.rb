@@ -37,5 +37,6 @@ Rails.application.routes.draw do
   #post '/chooseCar' => 'cars#choose_car'
   post '/admin/login' => 'admin#login'
   post '/complete_reservation' => 'reservation#complete_reservation'
+  post '/profileComplete' => 'members#profile_complete'
 
 end

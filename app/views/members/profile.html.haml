@@ -32,30 +32,32 @@
               Your Profile
             .clear
           .widget-content
-            %form{:action => "profile.php", :method => "post"}
+            %form{:action => "profileComplete", :method => "post"}
+              %input{name: "authenticity_token", type: "hidden", value: session[:_csrf_token]}
               .form-full
                 %label.form-left{:for => "fname"} First Name:
-                %input#fname.form-right{:maxlength => "30", :name => "fname", :type => "text", :value => "Burak1"}
+                %input#fname.form-right{:maxlength => "30", :name => "member[fname]", :type => "text", :value => @member.fname}
               .clear
               .form-full
                 %label.form-left{:for => "lname"} Last Name:
-                %input#lname.form-right{:maxlength => "30", :name => "lname", :type => "text", :value => "Çolak1"}
+                %input#lname.form-right{:maxlength => "30", :name => "member[lname]", :type => "text", :value => @member.lname}
               .clear
               .form-full
                 %label.form-left{:for => "phone"} Cell Phone:
-                %input#phone.form-right{:maxlength => "11", :name => "phone", :type => "text", :value => "05330000001"}
+                %input#phone.form-right{:maxlength => "11", :name => "member[phone]", :type => "text", :value => @member.cellphone}
               .clear
               .form-full
                 %label{:for => "name"} Email:
-                %strong.form-right kilitbilgi@gmail.com
+                %strong.form-right
+                =@member.email
               .clear
               .form-full
                 %label.form-left{:for => "password"} Password:
-                %input#password.form-right{:maxlength => "40", :name => "password", :type => "password"}
+                %input#password.form-right{:maxlength => "40", :name => "member[password]", :type => "password"}
               .clear
               .form-full
                 %label.form-left{:for => "bdate"} Birth Date:
-                %input#bdate.datepicker.form-right{:maxlength => "10", :name => "bdate", :type => "text", :value => "01/07/1993"}
+                %input#bdate.datepicker.form-right{:maxlength => "10", :name => "bdate", :type => "text", :value => @member.birthdate.strftime("%d/%m/%Y")}
               .clear
               %input.orange_button.form-continue{:name => "submit", :type => "submit", :value => "Update"}
       .clear
