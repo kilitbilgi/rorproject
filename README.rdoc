@@ -1,28 +1,12 @@
 == README
+Rent a car project based on ruby on rails.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project has several capabilities,
+-Login system
+-Admin panel
+-Online payment (Paypal and Stripe are available for now)
+-For static content , Amazon S3 supported , you can easily add your credentials and start your own rent a car portal.
 
-Things you may want to cover:
+Project Development Status : Stopped
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Please feel free to use in your projects and support.
